@@ -60,17 +60,10 @@ Calculate the bonus of each employee. The bonus of an employee is 100% of their 
 Write an SQL query to report the latest login for all users in the year 2020. Do not include the users who did not login in 2020.
 
 ```
-<<<<<<< HEAD
-select user_id, max(time_stamp) as last_stamp
-from Logins
-where time_stamp >= '2020-01-01' and time_stamp <= '2020-12-31'
-group by user_id
-=======
     select user_id, max(time_stamp) as last_stamp
     from Logins
     where time_stamp >= '2020-01-01' and time_stamp <= '2020-12-31'
     group by user_id
->>>>>>> develop
 ```
 
 6. **Missing information**
@@ -110,8 +103,6 @@ The employee's salary is missing.
     UNION ALL
     SELECT current_date + interval '1 year', 'Next Year';
 ```
-<<<<<<< HEAD
-=======
 
 12. **Windows function**
 Calculate 7 day moving average from a table that contains price and date timestamps using window functions
@@ -144,4 +135,4 @@ Calculate 7 day moving average from a table that contains price and date timesta
 7. union all // allows repetition of rows
 8. order by emp_salary DESC OFFSET 3 LIMIT 1; // 4th hihgest salary
 9. rank() over(PARTITION BY DepartmentId order by salary desc) as salRank // Rank salary in each dept
->>>>>>> develop
+

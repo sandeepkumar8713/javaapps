@@ -82,9 +82,6 @@ Educative : https://www.youtube.com/watch?v=uw-gcK9bjkk&t=227s
 6) Detailed Design : Dive deeper into each component and flesh out the specifics.
 7) Evaluation : Test your design, identify flaws and areas of improvement.
 8) Distinctive Component or Feature
-<<<<<<< HEAD
-=======
 
 ## Alternative
 1. Polling vs Websocket vs PubSub
->>>>>>> develop

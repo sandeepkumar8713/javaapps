@@ -104,12 +104,7 @@ order them by their name in ascending order.
     with cte as (
     select r1.user_id, sum(r1.distance) as travelled_distance
     from Rides as r1
-    group by r1.user_id
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
-    )
+    group by r1.user_id)
 
     select u1.name, 
     (case 
@@ -145,8 +140,3 @@ Find the patient_id, patient_name and conditions of the patients who have Type I
     from Patients 
     where conditions like 'DIAB100 %' or conditions like '% DIAB100' 
 ```
-
-<<<<<<< HEAD
-9. 
-=======
->>>>>>> develop

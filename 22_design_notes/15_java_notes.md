@@ -148,10 +148,7 @@
     import java.util.Comparator; // For List of objects
     public static Comparator<Box> getCompByArea(){
         Comparator<Box> comp = new Comparator<Box>(){
-<<<<<<< HEAD
-=======
             // Defining Anonymous class
->>>>>>> develop
             @Override
             public int compare(Box s1, Box s2)
             {
@@ -165,11 +162,7 @@
     import java.util.Arrays;
     Arrays.sort(intervals, (o1, o2) -> o1[1] - o2[1]); // For array of objects
 --------------------------------------------
-<<<<<<< HEAD
-**Date**
-=======
 **Date Formatter**
->>>>>>> develop
 
 https://docs.oracle.com/javase/8/docs/api/java/util/Date.html#compareTo-java.util.Date-
 
@@ -177,17 +170,10 @@ https://docs.oracle.com/javase/8/docs/api/java/util/Date.html#compareTo-java.uti
     import java.util.Date;
     public static void main(String[] args) throws ParseException {
 
-<<<<<<< HEAD
-        //Current timestamp
-        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-
-        //Compare
-=======
         // Current timestamp to string format
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 
         // Compare
->>>>>>> develop
         SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
         Date d1 = sdformat.parse("2019-04-15");
         Date d2 = sdformat.parse("2019-08-10");
@@ -328,11 +314,8 @@ lastElement = iterator.next() }
     int[][] intervals = {{1,2},{2,3},{3,4},{1,3}};
 
     this.minTime = Math.min(this.minTime, inpStartTime);
-    
-<<<<<<< HEAD
-=======
+
     // For Platform problem
->>>>>>> develop
     Map<Integer, Integer> myMap = new TreeMap<Integer, Integer>();
     Integer count = myMap.get(inpStartTime);
     if (count == null){
@@ -370,24 +353,14 @@ lastElement = iterator.next() }
     single = count % 3;
     result |= single << i;
 
-<<<<<<< HEAD
+    // str to int
+    int num = Integer.parseInt(ele);
+
     // int to String
     int i=200;  
     String s=String.valueOf(i);  
 
-    // str to int
-    int num = Integer.parseInt(ele);
-
-=======
-    // str to int
-    int num = Integer.parseInt(ele);
-
-    // int to String
-    int i=200;  
-    String s=String.valueOf(i); 
-
->>>>>>> develop
-    //Array of Char to Str
+    // Array of Char to Str
     char[] arr = { 'p', 'q', 'r', 's' };
     String str = String.valueOf(arr);
 
@@ -423,9 +396,6 @@ lastElement = iterator.next() }
     }
 
 --------------------------------------------
-<<<<<<< HEAD
-=======
-
 **Old notes**
 
 ```
@@ -512,4 +482,4 @@ Objects that are equal (according to their equals()) must return the same **hash
 
 If either operand is a String, the + operator **concatenates** the operands.
 If both operands are numeric, the + operator **adds** the operands.
->>>>>>> develop
+

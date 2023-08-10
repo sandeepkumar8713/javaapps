@@ -57,10 +57,7 @@ Note these are Postgres queries
 ```
 
 3. **Rank Scores**
-<<<<<<< HEAD
-=======
 We will use window function
->>>>>>> develop
 
 ```
     CREATE TABLE sales (
@@ -126,15 +123,11 @@ Write a SQL query to find all the duplicate emails (no upper case letters) of th
         group by email_id
     ) as countEmail where email_count > 1;
 
-<<<<<<< HEAD
-=======
-     select email_id from (
+    select email_id from (
         select email_id, count(email_id) as email_count from employees
         group by email_id
         having email_count > 1
     );
-
->>>>>>> develop
 ```
 
 6. **Customer who never orders**

@@ -119,13 +119,8 @@ Write an SQL query to swap the seat id of every two consecutive students. If the
         when id%2 = 0 then id-1
         when id%2 <> 0 then id+1
     end as id, student 
-<<<<<<< HEAD
-from seat 
-order by id
-=======
     from seat 
     order by id
->>>>>>> develop
 ```
 
 8. **Actor and Director**

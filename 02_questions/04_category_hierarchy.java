@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-=======
 // We're given categories that are organized hierarchically and a list of coupons where each coupon can be
 // applied to certain categories. Coupons are valid for child categories of categories it can be applied to.
 // First question: Given a category, return list of coupons applicable to that category.
 // Second question: Each coupon now has a validity period, return list of coupons application to given
 // category on a particular date.
 
->>>>>>> develop
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

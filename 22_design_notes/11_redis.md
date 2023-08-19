@@ -3,7 +3,8 @@
 Medium : https://medium.com/@juwelariful1/what-is-redis-and-why-with-use-case-1b294b91e373
 
 ## Introduction : 
-1. AWS says that Redis is a fast, open-source, in-memory **key-value data store** for use as a **database, cache, message broker, and queue**. 
+1. AWS says that Redis is a fast, open-source, in-memory **key-value data store** for use as a 
+   **database, cache, message broker, and queue**. 
 2. Redis is also known as **NoSQL Database** and key/value store.
 3. An in-memory database is a database that keeps the whole dataset in RAM. What does that mean? It means that each \
    time you query a database or update data in a database, you only access the main memory. So, there’s no Disk involved \
@@ -34,23 +35,23 @@ Medium : https://medium.com/@juwelariful1/what-is-redis-and-why-with-use-case-1b
    advertising campaigns, and AI-driven machine learning processes.
 
 ## Advantages  : 
-1. **Quick response database** : it stores data in memory, rather than on a disk or solid-state drive (SSD) that's why its response \
-   time is quicker than others when performing read and write operations.
+1. **Quick response database** : it stores data in memory, rather than on a disk or solid-state drive (SSD) that's why its \
+   response time is quicker than others when performing read and write operations.
 2. **Data persistence** : Redis uses persistent disk storage designed to survive process outages and network bottlenecks. Redis \
    can persist datasets by taking regular snapshots of data and appending them with changes as they become available. Redis can \
    then be configured to generate these database backups on-demand or at automatic intervals to ensure database durability an integrity.
-3. **Support for arbitrary data** : Data stored in Redis can be in any form and size. Redis is binary-safe so it can store any data, \
-   from human-readable text to encoded binaries. A single data element in Redis can range in size from 0 bytes to 0.5GB, allowing it \
-   to cache practically any datum.
-4. **Key-based access**: Redis is based on the key-value model in which data is stored and fetched from Redis by key. Key-based access \
-   allows for extremely efficient access times and this model maps naturally to caching, with Redis providing the customary\
+3. **Support for arbitrary data** : Data stored in Redis can be in any form and size. Redis is binary-safe so it can store any \
+   data, from human-readable text to encoded binaries. A single data element in Redis can range in size from 0 bytes to 0.5GB, \ 
+   allowing it to cache practically any datum.
+4. **Key-based access**: Redis is based on the key-value model in which data is stored and fetched from Redis by key. Key-based \ 
+   access allows for extremely efficient access times and this model maps naturally to caching, with Redis providing the customary\
    GET and SET semantics for interacting with the data.
 5. **Data expiration** : Keys in Redis can be set with a time to live (TTL), after which they are expired. Until they expire, \
    such keys are called “volatile” keys.
-6. **Developer friendly** : Redis is being supported in most of the languages (Perks of using an Open Source Technology). Languages \
-   like JavaScript, Java, Go, C, C++, C#, Python, Objective-C, PHP and almost every famous language out there has support for this.
-7. **Extensibility** : Redis is an open-source project supported by a vibrant community. There’s no vendor or technology lock-in as \ 
-   Redis is open standards-based, supports open data formats, and features a rich set of clients.
+6. **Developer friendly** : Redis is being supported in most of the languages (Perks of using an Open Source Technology). \
+   Languages like JavaScript, Java, Go, C, C++, C#, Python, Objective-C, PHP and almost every famous language out there has support for this.
+7. **Extensibility** : Redis is an open-source project supported by a vibrant community. There’s no vendor or technology lock-in\
+   as Redis is open standards-based, supports open data formats, and features a rich set of clients.
 
 
 ## How Redis expires keys :
@@ -67,8 +68,8 @@ Redis : https://redis.io/commands/expire/#how-redis-expires-keys
     3. If more than **25% of keys were expired**, start again from step 1.
 5. This is a trivial probabilistic algorithm, basically the assumption is that our sample is representative of the whole key space,\
    and we continue to expire until the percentage of keys that are likely to be expired is under 25%
-6. This means that at any given moment the maximum amount of keys already expired that are using memory is at max equal to max amount \
-   of write operations per second divided by 4.
+6. This means that at any given moment the maximum amount of keys already expired that are using memory is at max equal to max 
+   amount of write operations per second divided by 4.
 
 The expiration cycle has been rewritten in Redis 6.0 to allow for much faster expirations that more closely match the time-to-live \
 (TTL) property. Redis 6 expiration will no longer be based on random sampling but will take keys sorted by expire time in a **radix tree**.

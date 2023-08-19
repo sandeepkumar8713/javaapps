@@ -32,7 +32,7 @@ interface SocketAdapter {
 	public Volt get3Volt();
 }
 
-//Using inheritance for adapter pattern
+// Using inheritance for adapter pattern
 class SocketClassAdapterImpl extends Socket implements SocketAdapter{
 
 	@Override
@@ -60,7 +60,7 @@ class SocketClassAdapterImpl extends Socket implements SocketAdapter{
 
 class SocketObjectAdapterImpl implements SocketAdapter{
 
-	//Using Composition for adapter pattern
+	// Using Composition for adapter pattern
 	private Socket sock = new Socket();
 	
 	@Override

@@ -75,7 +75,7 @@ In **summary**, if you get asked if Kafka can replace a database, then here are 
 4. **Stateful applications** can be built leveraging Kafka clients (microservices, business applications) without the   
    need for another external database
 5. **Not a replacement** for existing databases like MySQL, MongoDB, Elasticsearch or Hadoop. \
-   **Other databases and    Kafka complement each other**; the right solution has to be selected for a problem; \
+   **Other databases and Kafka complement each other**; the right solution has to be selected for a problem; \
    often purpose-built materialized views are created and updated in real time from the central event-base \
    infrastructure
 6. Different options are available for **bi-directional pull and push based integration between Kafka and databases** \

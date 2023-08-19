@@ -16,8 +16,8 @@ Youtube : https://www.youtube.com/watch?v=tVRyb4HaHgw
 
 ## Design Approach : 
 1. Top-down design : first high level design, then components and then sub-components
-2. Bottom-up design : We first design the smallest component. Then we use those components to design a bigger component. It is 
-   align with Object oriented design.
+2. Bottom-up design : We first design the smallest component. Then we use those components to design a bigger component.
+   It is align with Object oriented design.
 
 # Components :
 1. Parking lot system

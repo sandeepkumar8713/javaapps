@@ -13,26 +13,27 @@ Medium : https://medium.com/@itIsMadhavan/what-is-load-balancer-and-how-it-works
    added to the server group, the load balancer automatically starts to send requests to it.
 5. Loads are broken up based on a set of **predefined metrics**, such as by geographical location, or by the number of concurrent \
    site visitors.
-6. Members of a certain group — such as **‘people living in Europe’**, for example, may be directed to a server within Europe, while \
-   members of another group take, for instance, ‘North Americans’ may be directed to another server, closer to them.
+6. Members of a certain group — such as **‘people living in Europe’**, for example, may be directed to a server within Europe, \
+   while members of another group take, for instance, ‘North Americans’ may be directed to another server, closer to them.
 
 ## Load Balancing Algorithms :
 1. **Round Robin** — Requests are distributed across the group of servers sequentially.
-2. **Least Connections** — A new request is sent to the server with the fewest current connections to clients. The relative computing \
-   capacity of each server is factored into determining which one has the least connections.
+2. **Least Connections** — A new request is sent to the server with the fewest current connections to clients. The relative 
+   computing capacity of each server is factored into determining which one has the least connections.
 3. **IP Hash** — The IP address of the client is used to determine which server receives the request.
 
 ## Layers 
 1. Load balancers are generally grouped into two categories: Layer 4 and Layer 7. Layer 4 load balancers act upon data found \
    in network and transport layer protocols (**IP, TCP, FTP, UDP**). Layer 7 load balancers distribute requests based upon data \
    found in application layer protocols such as **HTTP**.
-2. Layer 7 load balancers can further distribute requests based on application specific data such as **HTTP headers, cookies, or data** within the application message itself, such as the value of a specific parameter.
+2. Layer 7 load balancers can further distribute requests based on application specific data such as 
+   **HTTP headers, cookies, or data** within the application message itself, such as the value of a specific parameter.
 
 ## Session Persistence or Sticky Sessions : 
 1. It is essential that all requests from a client are sent to the same server for the duration of the session. This is \
    known as **session persistence**. A method used with Application Load Balancing, to achieve server-affinity.
 2. Another use case for session persistence is when an **upstream server** stores information requested by a user in its \
-   **cache** to boost performance
+   **cache** to boost performance.
 
 **Dynamic Configuration of Server Groups** :  Many fast‑changing applications require new servers to be added or taken down\
 on a constant basis. In such environments, it greatly helps if the load balancer can dynamically add or remove servers from \
@@ -46,9 +47,9 @@ the group without interrupting existing connections.
    the software on the hardware of your choice or in cloud environments like AWS EC2.
 
 ## Disadvantages
-1. Latency
-2. Single point of failure
-3. Complexity increases
+1. **Latency**
+2. **Single point of failure**
+3. **Complexity increases**
 
 ## Difference
 

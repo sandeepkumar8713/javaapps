@@ -125,14 +125,33 @@ Calculate 7 day moving average from a table that contains price and date timesta
     ORDER BY COUNT(CustomerID) DESC;
 ```
 
-## Notes
-1. RANK () OVER (ORDER BY v) rank_no 
-2. Date, avg(Price) OVER(ORDER BY Date ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)   // Window function
-3. GROUP_CONCAT(DISTINCT product order by product separator ',') as products
-4. GROUP BY Country HAVING COUNT(CustomerID) > 5
-5. conditions like 'DIAB100 %'
-6. concat(upper(substr(name,1,1)),lower(substr(name,2))) 
-7. union all // allows repetition of rows
-8. order by emp_salary DESC OFFSET 3 LIMIT 1; // 4th hihgest salary
-9. rank() over(PARTITION BY DepartmentId order by salary desc) as salRank // Rank salary in each dept
+14. **Record of last 30 days**
 
+```
+    select * from sample_table 
+    where sent_date between current_date - interval '30 days' and current_date;
+
+    SELECT * FROM Products
+    WHERE Price BETWEEN 10 AND 20;
+```
+
+## Notes
+1. SELECT v, RANK () OVER ( ORDER BY v ) rank_no FROM sales; // **Ranking**
+
+2. Date, avg(Price) OVER(ORDER BY Date desc ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) // **Window function**
+
+3. GROUP_CONCAT(DISTINCT product order by product separator ',') as products // **Group row value as a list**
+
+4. GROUP BY Country HAVING COUNT(CustomerID) > 5 // **where clause on aggregate**
+
+5. conditions like 'DIAB100 %' // **Match pattern**
+
+6. concat(upper(substr(name,1,1)),lower(substr(name,2)))  // **Substring and upper case**
+
+7. union all  // **allows repetition of rows**
+
+8. order by emp_salary DESC OFFSET 3 LIMIT 1; // **4th hihgest salary**
+
+9. rank() over(PARTITION BY DepartmentId order by salary desc) as salRank  // **Rank salary in each dept**
+
+10. where sent_date between current_date - interval '30 days' and current_date; // **Data for last 30 days**

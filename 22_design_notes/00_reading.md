@@ -1,16 +1,25 @@
 # Reading Material
 
-    All the Object Oriented design patterns
-    5 LLD designs (Bookmyshow, Uber, Flipkart, Parking Lot, Chess)
-    7 HLD designs (Bookmyshow, Uber, Whatsapp, Twitter, Tiny url, DoorDash, Cricbuzz)
-    HLD Gloden rules
-    LLD Approach
-    Quick Summary (Zookeeper, Oauth2.0, API Gateway)
-    LLD details : DB Design, API Design, Error Handling (retry), Race condition
-    HLD details : Kafka, Redis, Load Balancer, CI/CD steps, Consistent hashing
-    SOLID Scalar notes
-    Token refresh (Wiki)
-    java specific
+    1. All the Object Oriented design patterns
+
+    2. 8 LLD designs (Bookmyshow, Uber, Flipkart, Parking Lot, Chess, Imdb, Netflix, Notification)
+       7 HLD designs (Bookmyshow, Uber, Whatsapp, Twitter, Tiny url, DoorDash, Cricbuzz, Quora)
+
+    3. API Design (Search Service, File Service, Pub Sub Service, Twitter, Uber)
+       Class Diagram (Elevator, Car Rental, Cricinfo)
+       SQL query
+    
+    4. HLD Gloden rules
+       LLD Approach
+    
+    5. Quick Summary (Zookeeper, Oauth2.0, API Gateway)
+       LLD details : DB Design, ACID, CAP, API Design, Error Handling (retry), Race condition
+       HLD details : Kafka, Redis, Load Balancer, CI/CD steps, Consistent hashing
+       REST, Microservice vs Monolith, SQL vs NoSQL
+    
+    6. SOLID Scalar notes
+       Token refresh (Wiki)
+       java specific
 
 ## Remaining:
 

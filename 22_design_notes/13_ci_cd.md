@@ -55,7 +55,7 @@ For example, we can address the following types of tests:
     + Staging servers - monitoring / tests/ metrics
     + Canary deployments / AB deployments
         * deployed to 5% of the user base
-            - are there new exceptions
-            - are the people complaining
-            - have the ratings gone down
+            - are there new **exceptions**
+            - are the people **complaining**
+            - have the **ratings** gone down
         * finally deploy the code

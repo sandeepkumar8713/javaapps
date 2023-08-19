@@ -41,10 +41,10 @@ Let's imagine that your code should send a notification. The numbers below corre
 
 
 4. **Job Processing**
-    1. Queues hold on to messages until your job processors process them. They are also cheap and highly scalable. Job processors are code that takes messages from the job queues and processes them. They can scale based on the number of messages in the queue.
+    1. Queues hold on to messages until your job processors process them. They are also cheap and highly scalable. Job processors are code that takes messages from the job queues and processes them. **They can scale based on the number of messages in the queue**.
     2. In our case, the job processor should make an API call to the appropriate service to send out the notification through a transactional email service.
-    3. Most email, SMS, or similar delivery services have strict guidelines on the amount and quality of messages you send. You should also carefully review these and put proper systems in place. Here is our guide on how to prevent getting suspended on AWS SES.
-    4. You can configure a max number of job processors to avoid hitting the rate limits of the delivery services.
+    3. Most email, SMS, or similar delivery services have strict **guidelines on the amount and quality** of messages you send. You should also carefully review these and put proper systems in place. Here is our guide on how to prevent getting suspended on AWS SES.
+    4. You can configure a **max number of job processors** to avoid hitting the rate limits of the delivery services.
 
 ## Further Improvements
 Here are a few things that are possible but we haven't covered. If you need any of these capabilities, read the next section.

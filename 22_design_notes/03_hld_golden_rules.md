@@ -44,31 +44,31 @@
 
 Link : https://www.tablesgenerator.com/markdown_tables#
 
-| Problem / Requirement | Solution |
-|---|---|
-| read-heavy system | Cache |
-| low latency | Cache & CDN |
-| write-heavy system | Message Queue for async processing |
-| ACID complaint | RDBMS or SQL Database |
-| unstructured & doesn't require ACID properties | No-SQL Database |
-| Complex data in the form of videos, images, files etc | Blob/Object storage |
-| searching data in high volume | Search index, tries or a search engine like Elasticsearch |
-| Scale SQL Database | Database Sharding |
-| High Availability, Performance, & Throughput | Load Balancer |
-| faster data delivery globally, reliability, high availability, performance | CDN |
-| data with nodes, edges, and relationships like friend lists | Graph Database |
-| High-performing database queries | Database Indexes |
-| bulk job processing | Batch Processing & Message Queues |
-| reducing server load and preventing DOS attacks | Rate Limiter |
-| fault-tolerant & durable | Data Replication |
-| user-to-user communication (bi-directional) | Websockets |
-| detect failures in a distributed system | Heartbeat |
-| data integrity | Checksum Algorithm |
-| scale servers with add/removal of nodes efficiently | Consistent Hashing |
-| transfer data between various servers in a decentralized way | Gossip Protocol |
-| Limit the huge amount of data for a network request | Pagination |
-| Cache eviction policy | Least Recently Used |
-|  |  |
+| Sl  | Problem / Requirement | Solution |
+|-----|-----------------------|---|
+| 1   | read-heavy system     | Cache |
+| 2   | low latency           | Cache & CDN |
+| 3   | write-heavy system    | Message Queue for async processing |
+| 4   | ACID complaint        | RDBMS or SQL Database |
+| 5   | unstructured & doesn't require ACID properties | No-SQL Database |
+| 6   | Complex data in the form of videos, images, files etc | Blob/Object storage |
+| 7   | Searching data in high volume | Search index, tries or a search engine like Elasticsearch |
+| 8   | Scale SQL Database | Database Sharding |
+| 9   | High Availability, Performance, & Throughput | Load Balancer |
+| 10  | faster data delivery globally, reliability, high availability, performance | CDN |
+| 11  | data with nodes, edges, and relationships like friend lists | Graph Database |
+| 12  | High-performing database queries | Database Indexes |
+| 13  | bulk job processing | Batch Processing & Message Queues |
+| 14  | reducing server load and preventing DOS attacks | Rate Limiter |
+| 15  | fault-tolerant & durable | Data Replication |
+| 16  | user-to-user communication (bi-directional) | Websockets |
+| 17  | detect failures in a distributed system | Heartbeat |
+| 18  | data integrity | Checksum Algorithm |
+| 19  | scale servers with add/removal of nodes efficiently | Consistent Hashing |
+| 20  | transfer data between various servers in a decentralized way | Gossip Protocol |
+| 21  | Limit the huge amount of data for a network request | Pagination |
+| 22  | Cache eviction policy | Least Recently Used |
+| 23  | |     |
 
 ## RESHADED :
 

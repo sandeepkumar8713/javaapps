@@ -7,6 +7,7 @@
     Toss : game_id, toss_won_team_id, decision
     Venue : venue_id, address, capacity
     umpires : umpire_id, first_name, last_name
+    
     playing_11 : team_id, game_id, player_id, batting_position
     team_captain : team_id, game_id, player_id
     Player : player_id, first_name, last_name, DOB
@@ -19,6 +20,7 @@
     Wicket : game_id, team_id, player_out_id, bowled_by_id, caught_by_id, stumpted_by_id, runout_by_id
     Commentary : commentary_id, commentary, commentator_id
 
+**14 tables**
 
 ## API Design
 1. **Add** game (by admin)
@@ -72,7 +74,6 @@
             run : 
             wicket : 
             commentary : 
-            ball_type : 
             over_number : 
         } 
 

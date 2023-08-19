@@ -5,7 +5,7 @@ Medium : https://medium.com/startlovingyourself/api-design-for-microservices-a48
 # Introduction :
 1. Api design plays great role in building applications. If you don’t design proper response, consumer services won't
    be knowing whats going on behind the service call.
-2. We always write atleast 3 layer for any given API ex. **Controller, service, dao**.
+2. We always write atleast 3 layer for any given API ex. **Controller, service, dao(domain object access)**.
 
 ## Endpoints : 
 1. Let us take this example : 
@@ -53,7 +53,7 @@ Medium : https://medium.com/startlovingyourself/api-design-for-microservices-a48
 2. Never mix your domain classes with controller as we always expect these two to behave in different manner. 
 3. **Suggestions** : 
     1. Domain class(entity/document) can have many fields, but we might not want to send all to consumer. Have \
-       **dto classes with required fields**.
+       **dto(Data transfer object) classes with required fields**.
     2. When you think about comparing two POJO(Plain Old Java Object, object without restriction) objects, you care about \
        all the fields but domain object can be compared by just using ids.
     3. Controller should **not** have any kind of **business logic**.
@@ -69,12 +69,12 @@ Medium : https://medium.com/startlovingyourself/api-design-for-microservices-a48
        issues around designing test cases. You can move these **private methods to adapter class, have static methods to achieve** \
        the same as it is difficult to cover all possible use cases of private methods from calling test case. Sometimes it \
        requires to have multiple big configuration to test all the scenarios.
-    2. Always do validation on input fields, and throw custom exception with validation error code, and fields specific error message.\
-       If there are multiple fields need to be validated, move it to outside of service. Have **validator class** to write validation\
-       for all the fields.
+    2. Always do validation on input fields, and throw custom exception with validation error code, and fields specific error \
+       message. If there are multiple fields need to be validated, move it to outside of service. Have **validator class** \
+       to write validation for all the fields.
     3. Do not **mix two domain object/repo with the same service method**.
-    4. When calling **external services**, or other services if we don’t get required data, throw **custom exception** with required \
-       status code, error message.
+    4. When calling **external services**, or other services if we don’t get required data, throw **custom exception** with \
+       required status code, error message.
     5. Do’t do anything which is specific to repository layer at service. ex. **building criteria/query at service layer**\
        in case of Mongodb.
 
@@ -98,14 +98,6 @@ Medium : https://medium.com/startlovingyourself/api-design-for-microservices-a48
 
 Linkedin : https://www.linkedin.com/pulse/api-design-patterns-best-practices-building-robust-apis/
 
-## Introduction : 
-1. (REST) is a software architecture that imposes conditions on how an **API** should work. REST was initially created as a\
-   guideline to manage communication on a complex network like the internet. 
-2. Uses **HTTP** methods to interact with resources
-2. Supports **caching and scalability**.
-3. Works well for CRUD (Create, Read, Update, Delete) operations
-4. Allows for stateless communication between client and server
-5. Can be used with a variety of programming languages and frameworks
 
 ## Common Design patterns :
 
@@ -120,25 +112,6 @@ Linkedin : https://www.linkedin.com/pulse/api-design-patterns-best-practices-bui
 5. **Versioning** : This pattern involves providing different versions of an API to support changes in the API without \
    breaking existing clients.
 
-## Constraints : 
-1. **Client-server architecture**: This constraint requires that the client and server be **separated** from each other, with each \
-   responsible for a specific set of functionalities. This separation allows for greater scalability and flexibility in the \
-   system, as the client and server can be updated or replaced independently of each other.
-2. **Statelessness**: A RESTful API should be stateless, meaning that each request contains all the necessary information for the \
-   server to understand and respond to it. The server does not maintain any session state between requests, which makes the system \
-   more scalable and easier to manage.
-3. **Cacheability**: REST APIs should be designed to take advantage of caching, which can improve performance by reducing the number \
-   of requests sent to the server. Responses should include information that allows clients to determine whether the response can \
-   be cached, and for how long.
-4. **Layered system**: A RESTful API should be designed as a layered system, where each layer provides a specific set of \
-   functionalities.  This allows for greater flexibility in the system, as layers can be added, removed, or modified \
-   without affecting the rest of the system.
-5. **Uniform interface**: The uniform interface constraint defines the standard interface that all components of the API must \
-   adhere to. This includes the use of standard HTTP methods (GET, POST, PUT, DELETE) for CRUD operations, as well as a \
-   consistent data format (usually JSON or XML) for requests and responses.
-6. **Code on demand**: This is an optional constraint that allows for executable code to be transferred from the server to the \
-   client, which can add additional functionality and flexibility to the API. However, this constraint is not commonly used in \
-   RESTful APIs and should be used with caution, as it can add complexity to the system.
 
 ## Best Practices : 
 1. **Follow the REST architectural style**: The REST architectural style defines a set of constraints that must be followed to \

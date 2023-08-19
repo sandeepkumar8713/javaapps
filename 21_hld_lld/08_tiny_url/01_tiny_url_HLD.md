@@ -5,7 +5,7 @@ Youtube : https://www.youtube.com/watch?v=fMZMm_0ZhK4
 GeeksforGeeks: https://www.geeksforgeeks.org/system-design-url-shortening-service/
 
 ## Layers : 
-1. API  : createTiny(longUrl)   getLong(tinyUrl)
+1. API  : **createTiny(longUrl)   getLong(tinyUrl)**
 2. Application Layer : How would you generate a tiny url which is unique.
 3. Persistence Layer : Where and how would you save the short and long url.
 
@@ -20,7 +20,7 @@ GeeksforGeeks: https://www.geeksforgeeks.org/system-design-url-shortening-servic
 
 ## Database : 
 1. table:  key : tinyUrl and value : longUrl
-2. We can we use Nosql like MongoDB.
+2. We can we use Nosql like **MongoDB**.
 
 ## Tiny URL Generation :  
 1. What are the characters we can have in tiny url: A-Z, a-z, 0-9, total : 62.
@@ -52,7 +52,7 @@ GeeksforGeeks: https://www.geeksforgeeks.org/system-design-url-shortening-servic
        worker thread which requested it. This nunmber will be incremented next time. We will generate tinyUrl using this number. \
        Here we have problem of single **point of failure**. Overloading of this counterMaintainer is also possible.
 
-    2. **All Host** : Here every worker thread internally try to maintain their own counter. Suppose we have 64 worker threads.\
+    2. **All Host** : Here every worker thread internally try to maintain their **own counter**. Suppose we have 64 worker threads.\
        Let us suppose each worker thread have a unique id. So we have 6 bits for that. Take current timeStamp which is 32 bits.\
        Either take random or incremental value of 5 bits. So total we have 43 bits. If you are doing 1000 requests per second. \
        Then each worker thread is doing 20 requests per second. We have random number of only 5 bits(32). So there are chance of collision here.

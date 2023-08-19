@@ -9,7 +9,7 @@ Youtube : https://www.youtube.com/watch?v=L7LtmfFYjc4
 4. Encrypt our messages
 5. Acknowledgment 
 6. Telephony service (Not supported in this)
-7. Group Message (Not supported in th is)
+7. Group Message (Not supported in this)
 
 ## Components 
 **Load Balancer**
@@ -22,32 +22,29 @@ We need duplex connection here as the channel b/w client A and Client B as anyon
 **DB** 
 
 ## Working Steps
-1. When the message from client A goes to message server via **load balancer**. The message server checks if client B is online.\
-If yes, it will send the message to client B then and there. If not, then it will save the message in DB and wait for \
-client B to come online.
+1. When the message from client A goes to message server via **load balancer**. The message server checks if client B is 
+   online.If yes, it will send the message to client B then and there. If not, then it will save the message in DB and
+   wait for client B to come online.
 
 2. Please note, here client will connect to server as server itself doesn't know the address of the client. 
 
 3. **Acknowledgment : send, delivered, read**
-Send: Once server receives the message, it sends an ack to client A saying message has reached the server. \
-delivered: Once message is sent to Client B, the server sends an ack to client A saying message has been devlivered to B. \
-Read: Once client B has seen the message, the client B sends ack that ack saying message read to server. Server sends ack \
-to client A.
+    1. Send: Once server receives the message, it sends an ack to client A saying message has reached the server. \
+    2. delivered: Once message is sent to Client B, the server sends an ack to client A saying message has been devlivered to B. 
+    3. Read: Once client B has seen the message, the client B sends ack that ack saying message read to server. Server sends ack to client A.
 
 4. When a connection is established b/w client A and server. A process is created in the server for every client. It is \
 responsible for handling messages for client A. It is a **long running thread**. There will a queue for each process. \
 
 5. We will add an entry in DB with columns: **Process id and user id**. 
 
-6. When process A, receives a mesasage for client B. It queries the DB, to find process id of client B. Now process A will send the \
-message to the queue which is responsible to handle process for client B.
+6. When process A, receives a mesasage for client B. It queries the DB, to find process id of client B. Now process A will send the message to the queue which is responsible to handle process for client B.
 
 7. The process for client B, keeps on looking for messages in queue and as message comes in queue, it sends the message to client B.
 
-8. If client B is not connected to message server. There will not be any process or queue for B. So now client A, will save the \
-message for B in DB with entry as : **User id and message**. When connection with client B is established, a new process is \
-created for same and entry for same is created in DB. The process B also looks for any undelivered message in DB and delivers \
-it to the client B.
+8. If client B is not connected to message server. There will not be any process or queue for B. So now client A, will save the message for B in DB with entry as : **User id and message**. When connection with client B is established, a new 
+process is created for same and entry for same is created in DB. The process B also looks for any undelivered message
+in DB and delivers it to the client B.
 
 ## Other Features
 1. **Last seen** : We need **heart beat signal**. For this we need an entry in DB : user id, last seen timestamp. \
@@ -83,10 +80,6 @@ Erlang-based applications or run as a regular standalone web server.
 ## Improvements:
 1. We can use **indexing on UID** for faster retrievals. O(n) to O(log(n))
 2. Spawning a thread for every user is not efficient. Instead, we can use a **dynamic threadpool**.
-3. Similarly, having a queue per user is not efficient. Instead, we can have a **global queue** with object (message, action \
-like send/receive, uid)
-4. Since you are using DB for storing message in case user is not online, we need to implement a disaster recovery mechanism \
-i.e. **replication**.
-5. We can also implement **blocked contacts** by storing list of blocked UIDs for each user in the DB & we can drop such messages \
-in web server.
-
+3. Similarly, having a queue per user is not efficient. Instead, we can have a **global queue** with object (message, action like send/receive, uid)
+4. Since you are using DB for storing message in case user is not online, we need to implement a disaster recovery mechanism i.e. **replication**.
+5. We can also implement **blocked contacts** by storing list of blocked UIDs for each user in the DB & we can drop such messages in web server.

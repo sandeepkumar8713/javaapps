@@ -212,6 +212,19 @@ https://docs.oracle.com/javase/8/docs/api/java/util/Date.html#compareTo-java.uti
         }
     }
 
+    // Run backward
+    ListIterator<String> listIter = myList.listIterator(myList.size());
+    while (listIter.hasPrevious()) {
+        String prev = listIter.previous();
+        // Do something with prev here
+    }
+
+    // Returns true or false
+    al.contains(ele);
+
+    // Get element by index
+    al.get(index);
+
     // Find index of element
     ArrayList<Integer> arr = new ArrayList<Integer>(5);
     arr.add(1);
@@ -225,6 +238,12 @@ https://docs.oracle.com/javase/8/docs/api/java/util/Date.html#compareTo-java.uti
     int[] arr = new int{3, 5, 1, 4, 2};
     int indexOfTwo = ArrayUtils.indexOf(arr, 2);
 
+    1. remove by index
+    2. remove by value
+    3. check if element exists
+    4. Get element by index
+    5. find index of element
+
 --------------------------------------------
 **Misc 1**
 
@@ -237,6 +256,8 @@ https://docs.oracle.com/javase/8/docs/api/java/util/Date.html#compareTo-java.uti
 
     // Initialized to 0, by default.
     int[][] visited = new int[m][n]; 
+
+    // Print multiple numbers
     System.out.printf("%d %d\n", i, j);
 
     Set<String> hash_Set = new HashSet<String>();
@@ -244,6 +265,7 @@ https://docs.oracle.com/javase/8/docs/api/java/util/Date.html#compareTo-java.uti
     hash_Set.add("For");
     hash_Set.contains("4") // true or false
 
+    // Hash Map
     if (tempMap.containsKey(ch)){
     }
 
@@ -283,7 +305,7 @@ https://docs.oracle.com/javase/8/docs/api/java/util/Date.html#compareTo-java.uti
 The semantics of **LinkedHashMap** are still those of a Map, rather than that of a LinkedList. It retains insertion order, yes, but 
 that's an implementation detail, rather than an aspect of its interface.
 
-The quickest way to get the "first" entry is still entrySet().iterator().next(). Getting the "last" entry is possible,
+The quickest way to get the **"first"** entry is still entrySet().iterator().next(). Getting the "last" entry is possible,
 but will entail iterating over the whole entry set by calling .next() until you reach the last. while (iterator.hasNext()) { 
 lastElement = iterator.next() }
 
@@ -323,6 +345,7 @@ lastElement = iterator.next() }
     } else{
             myMap.put(inpStartTime, count + 1);
     }
+    myMap.remove(inpStartTime)
 
 ---------------------------------------------
 **Misc 3**
@@ -335,7 +358,10 @@ lastElement = iterator.next() }
     import java.util.PriorityQueue;
     PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>();
     minHeap.add(item);
-    first = minHeap.remove();
+    first = minHeap.peek(); 
+    first minHeap.remove();
+    first = minHeap.poll(); // do not delete
+    queue.remove("Geeks"); // remove specified element, return True or false
 
     PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
 
@@ -398,81 +424,80 @@ lastElement = iterator.next() }
 --------------------------------------------
 **Old notes**
 
-```
-    It is object of Component class
-    boolean test = (t instanceof Component);
-    wrapper class have caps String,Short,Long
-    if statement execpt boolean value,it gives error for in value
+It is object of Component class
+boolean test = (t instanceof Component);
+wrapper class have caps String,Short,Long
+if statement execpt boolean value,it gives error for in value
 
-    If you put a finally block after a try and its associated catch blocks, then once execution
-    enters the try block, the code in that finally block will definitely be executed except in the following circumstances.
+If you put a finally block after a try and its associated catch blocks, then once execution
+enters the try block, the code in that finally block will definitely be executed except in the following circumstances.
 
-    Any method (in this case, the main() method) that throws a checked exception (in this case, out.close() ) 
-    must be called within a try clause, or the method must declare that it throws the exception.
+Any method (in this case, the main() method) that throws a checked exception (in this case, out.close() ) 
+must be called within a try clause, or the method must declare that it throws the exception.
 
-    If a method does not handle an exception, the finally block is executed before the exception is propagated.
+If a method does not handle an exception, the finally block is executed before the exception is propagated.
 
-    if a method throws an exception,and that method is called in a normal block(not in try block) then 
-    the calling function should have throws delecration.
+if a method throws an exception,and that method is called in a normal block(not in try block) then 
+the calling function should have throws delecration.
 
-    public class ExceptionTest 
-    { 
-        class TestException extends Exception {} 
-        public void runTest() throws TestException {} 
-        public void test() throws Exception
-        { 
-            runTest(); 
-        } 
-    }
+public class ExceptionTest 
+{ 
+    class TestException extends Exception {} 
+    public void runTest() throws TestException {} 
+    public void test() throws Exception
+    { 
+        runTest(); 
+    } 
+}
 
-    The only legal statements after try blocks are either catch or finally statements.
+The only legal statements after try blocks are either catch or finally statements.
 
-    Error throwable exception runtime can be thrown using throw.
+Error throwable exception runtime can be thrown using throw.
 
-    TreeSet assures no duplicate entries; also, when it is accessed it will return elements in natural order, which typically means alphabetical.
+**TreeSet** assures no duplicate entries; also, when it is accessed it will return elements in natural order, which typically means alphabetical.
 
-    Two new empty String objects will produce identical hashcodes.
+Two new empty String objects will produce identical hashcodes.
 
-    If the equals() method returns true, the hashCode() comparison == must return true.
-    If the hashCode() comparison == returns true, the equals() method might return true.
+If the equals() method returns true, the hashCode() comparison == must return true.
+If the hashCode() comparison == returns true, the equals() method might return true.
 
-    arraylist Yes, always the elements in the collection are ordered.
+arraylist Yes, always the elements in the collection are ordered.
 
-    The start() method causes this thread to begin execution; the Java Virtual Machine calls the run method of this thread. 
+The start() method causes this thread to begin execution; the Java Virtual Machine calls the run method of this thread. 
 
-    valid statement
-    Thread(Runnable r, String name)
-    Thread()
+valid statement
+Thread(Runnable r, String name)
+Thread()
 
-    object class method
-    notify() notyifyall() wait(long msecs)
+object class method
+notify() notyifyall() wait(long msecs)
 
-    Start a thread
+Start a thread
 
-    class X implements Runnable 
-    { 
-        public static void main(String args[]) 
-        {
-            X run = new X(); Thread t = new Thread(run); t.start();
-        } 
-        public void run() {} 
-    }
+class X implements Runnable 
+{ 
+    public static void main(String args[]) 
+    {
+        X run = new X(); Thread t = new Thread(run); t.start();
+    } 
+    public void run() {} 
+}
 
-    run contain the body of thread.
+run contain the body of thread.
 
-    Even if the thread has finished running, it is still illegal to call start() again.
+Even if the thread has finished running, it is still illegal to call start() again.
 
-    Runnable(interface), we need to implement it. Define run method. Make an object pass of the class and pass it as arugment to thread class. Call start method thread object.
-    Thread(class), we need to extend it. Define run method. Make an object of derived class. call start method.
+Runnable(interface), we need to implement it. Define run method. Make an object pass of the class and pass it as arugment to thread class. Call start method thread object.
+Thread(class), we need to extend it. Define run method. Make an object of derived class. call start method.
 
-    1. An Iterator is an interface in Java and we can traverse the elements of a list in a forward direction whereas a ListIterator is an interface that extends the Iterator interface and we can traverse the elements in both forward and backward directions. 
-    2. An Iterator can be used in these collection types like List, Set, and Queue whereas ListIterator can be used in List collection only. 
-    3. The important methods of Iterator interface are hasNext(), next() and remove() whereas important methods of ListIterator interface are add(), next(), hasNext(), hasPrevious() and remove().
-```
+1. An Iterator is an interface in Java and we can traverse the elements of a list in a forward direction whereas a ListIterator is an interface that extends the Iterator interface and we can traverse the elements in both forward and backward directions. 
+2. An Iterator can be used in these collection types like List, Set, and Queue whereas ListIterator can be used in List collection only. 
+3. The important methods of Iterator interface are hasNext(), next() and remove() whereas important methods of ListIterator interface are add(), next(), hasNext(), hasPrevious() and remove().
+
+**HashMap, TreeMap(keeps the element sortred), LinkedHashMap(keeps insertion order of elements)**
 
 -----------------------------------------
 **India Bix**
-
 
 int [6] myScores; // illegal declartion
 
@@ -482,4 +507,3 @@ Objects that are equal (according to their equals()) must return the same **hash
 
 If either operand is a String, the + operator **concatenates** the operands.
 If both operands are numeric, the + operator **adds** the operands.
-

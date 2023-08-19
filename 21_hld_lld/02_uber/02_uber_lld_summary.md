@@ -11,6 +11,6 @@
 ## Notes : 
 1. Car can be of **extended** with different types of cars.
 2. Receipt should be generated after the payment.
-3. Ride can be cancelled. 
-4. Admin can refund money if required.
+3. Ride can be **cancelled**. 
+4. Admin can **refund** money if required.
 5. Rider, Driver account's can be **blocked**.

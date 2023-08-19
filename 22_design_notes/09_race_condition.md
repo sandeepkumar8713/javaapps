@@ -44,7 +44,7 @@ Java example : 01_folder/10_producer_consumer.java
 5. Please notice that the operations in lines 2 and 5 depend on the external data repository, which must be consistent for all of \
    your application's instances. In this case, the critical section in line 4 will now be synchronized for any process of your \
    application.
-6. 4 components in below example are : TransactionService, LockStateService, StateRepository, Lock
+6. 4 components in below example are : **TransactionService, LockStateService, StateRepository, Lock**
 
     ```
     public void doInTransaction(T state, Consumer<T> concurrentOperation) {

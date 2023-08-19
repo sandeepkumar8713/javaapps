@@ -20,7 +20,7 @@ overall interview performance.
 
 4. The interviewer also looks for whether you can identify different object-oriented design patterns or programming patterns \
 while designing the system. Foucs of **API and database design** also. Design APIs with future in mind. For DB design, focus on
-**Indexes and normalization** 
+**Indexes and normalization**. Prepare to write **SQL queries** as well.
 
 5. Sometimes the interviewer present you with a situation to evaluate how you can tackle **concurrency** in your design. E.g. In a \
 parking lot design question the interviewer can suggest that the parking lot has two or more entrances or exits.

@@ -32,7 +32,7 @@ Medium : https://medium.com/double-pointer/system-design-interview-a-two-player-
 6. **makeMove(Move, Player)** method will be implmented by Game class.
 7. Each type(child) of piece will have its own **canMove(Board, start, stop)** method implementation.
 8. To publish the game after each move, the last entry in moves list can be placed in **Redis with key as Game id**.
-9. We can have schedular running every 2-3 times in a sec to fetch the latest move from the Redis and send to user via \
+9. We can have schedular running every 2-3 times in a sec to fetch the latest move from the Redis and send to user via 
    active **web socket** connection.
 
 ## DB Design

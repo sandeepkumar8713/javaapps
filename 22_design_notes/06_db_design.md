@@ -43,7 +43,7 @@ The API gateway handles requests in one of two ways. Some requests are simply pr
 It handles other requests by fanning out to multiple services
 
 ## CQRS Pattern
-1. The Command Query Responsibility Segregation (CQRS) is provide to separate commands and queries database in order to better
+1. The **Command Query Responsibility Segregation** (CQRS) is provide to separate commands and queries database in order to better
    perform querying several microservices.
 2. Its based on **write-less, read-more approaches**, if we have this kind of operation behaviors its good to use this pattern.
 
@@ -102,7 +102,7 @@ be achieved at the same time.
 
 **Consitnency** : Consistency means that if the system get any read request, the data should return last updated value \
 from database under all circumstances. If the data cannot be retrieved, an error should be throw and if data is not \
-up-to-date, then it should never be returned. So, when consistent not provide, 
+up-to-date, then it should never be returned. So, when consistent not be provided, 
 **the system must block the request until all replicas update**.
 
 **Availability** : The ability of a distributed system to respond to requests at any time. If distributed system can \
@@ -115,7 +115,7 @@ in different networks. Partition Tolerance is the ability of the system to **con
 **communication problem** that may occur between the nodes. Its basically guarantees the system continues to operate even \
 if one data node is down.
 
-**CAP Theorem said that If there is Partition Tolerance, either Availability or Consistency should be selected.**
+**CAP Theorem said that If there is Network Partition, either Availability or Consistency should be selected.**
 
 ## Eventual vs Strong Consistency in Distributed Databases
 
@@ -135,8 +135,8 @@ For **transactional** things go for MySQL because it provides a **lock-in** feat
 2. Relational databases mostly stored in the data center is in a single network infrastructure that creates a kind of single \
    point of failure situation. Relational databases prevent distribute data from different nodes. For this reason, NoSQL \
    **databases don’t include foreign keys, joins,** that is, relations between data.
-3. The **unrelated data** allows it to be stored in a distributed manner much more easily within the different nodes of the system. \
-   This also makes NoSQL(MonogoDB, Cassandra) type databases easily scalable.
+3. The **unrelated data** allows it to be stored in a distributed manner much more easily within the different nodes of the \
+   system. This also makes NoSQL(MonogoDB, Cassandra) type databases easily scalable.
 4. In a distributed architecture, Partition Tolerance seems to be a must-have feature. Mostly in microservices architectures \
    choose **Partition Tolerance with High Availability and follow Eventual Consistency** for data consistency.
 
@@ -169,16 +169,16 @@ Link : https://www.freecodecamp.org/news/database-indexing-at-a-glance-bb50809d4
 
 **Advantage of Clustered Index** : 
 1. This ordering or **co-location of related data** actually makes a clustered index faster.\
-When data is fetched from disk, the **complete block containing** the data is read by the system since our disk IO system \
-writes & reads data in blocks. So in case of range queries, it’s quite possible that the collocated data is buffered \
-in memory. 
+   When data is fetched from disk, the **complete block containing** the data is read by the system since our disk IO system \
+   writes & reads data in blocks. So in case of range queries, it’s quite possible that the collocated data is buffered \
+   in memory. 
 2. Since a clustered index impacts the physical organization of the data, there can be only **one clustered index per table**.
 
 **Disadvantages of Primary Index**:
 1. Since the primary index contains a direct reference to the data block address through the virtual address space & \
-disk blocks are physically organized in the order of the index key, every time the **OS does some disk page split** due \
-to DML operations like INSERT / UPDATE / DELETE, the **primary index also needs to be updated**. So DML operations puts \
-some pressure on the performance of the primary index.
+   disk blocks are physically organized in the order of the index key, every time the **OS does some disk page split** due \
+   to DML operations like INSERT / UPDATE / DELETE, the **primary index also needs to be updated**. So DML operations puts \
+   some pressure on the performance of the primary index.
 
 ## Secondary Index :
 1. Any index other than a clustered index is called a secondary index. **Secondary indices does not impact physical storage** \
@@ -192,8 +192,8 @@ some pressure on the performance of the primary index.
    primary key column can be deleted/inserted. In such cases, the existence of lots of secondary indexes \
    can create issues.
 
-**Unique Keys** : Like primary keys, unique keys can also identify records uniquely with one difference — the unique key column can \
-**contain null values**.
+**Unique Keys** : Like primary keys, unique keys can also identify records uniquely with one difference — the unique key column
+ can **contain null values**.
 
 **Composite Index** :
 1. MySQL lets you define indices on **multiple columns**, up to 16 columns. This index is called a Multi-column / Composite / \
@@ -241,7 +241,8 @@ Denormalization is the process of adding precomputed redundant data to an otherw
 
 Denormalization addresses a fundamental fact in databases: Read and join operations are slow.
 
-An important consideration for normalizing data is if the data will be read heavy or write heavy. Because data is duplicated in a denormalized database, when data needs to be added or modified, several tables will need to be changed. This results in slower write operations.
+An important consideration for normalizing data is if the data will be read heavy or write heavy. Because data is 
+**duplicated in a denormalized database**, when data needs to be added or modified, several tables will need to be changed. This results in slower write operations.
 
 Therefore, the fundamental tradeoff becomes **fast writes and slow reads in normalized databases** versus **slow writes and fast reads in denormalized**.
 

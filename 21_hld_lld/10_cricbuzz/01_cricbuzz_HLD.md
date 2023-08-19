@@ -45,7 +45,7 @@ Profile, Live score, Calendar, Headlines, Teams, Leader board, photos, support 3
    response(time to response, which cache responded).  
 
 ## Request Handling : 
-1. **Hystrix** : It is a library designed to control the interactions between these distributed services providing greater \
+1. **Hystrix** : It is a **library** designed to control the interactions between these distributed services providing greater \
 tolerance of latency and failure. Properties : **Circuit breaking, default response fallback, request collapse**.
 2. If out of 3 core APIs 1 is slow, the response of the product API will be slow. That might cause a **ripple** effect to \
    downstream servers. We can solve this using circuit breaking. 

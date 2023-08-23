@@ -62,27 +62,3 @@ It generally has the following capabilities:
    multiple API Gateways and split the calls using Load Balancer and Elastic IP.
 3. **Added Complexity**: The API Gateway can get complex when the end users can be of various kinds like IoS, Android, Web, etc. In this case we can add multiple    
    configurations for different entry points. This architecture is also known as “Backend for Frontend” pattern.
-
-**SQL vs noSQL**
-
-1. REASONS TO USE A SQL DATABASE
-a. You need to ensure ACID compliancy (Atomicity, Consistency, Isolation, Durability).
-b. Your data is structured and unchanging.
-
-2. REASONS TO USE A NOSQL DATABASE
-a. Storing large volumes of data that often have little to no structure.
-b. Making the most of cloud computing and storage.
-c. Rapid development
-
-NoSQL
-Advantages 4
-● Non-Relational means table-less
-● Mostly Open Source and Low-Cost
-● Easier scalability
-● No need to develop a detailed database model
-
-Disadvantages 3
-● Community not as well defined
-● Lack of reporting tools
-● Lack of standardization
-

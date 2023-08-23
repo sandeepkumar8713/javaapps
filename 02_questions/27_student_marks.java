@@ -1,10 +1,7 @@
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
 import java.util.HashMap;
-import java.util.Iterator;
 
 // Design a service for find student marks and find topers.
 
@@ -19,16 +16,6 @@ class Student{
         this.marks = marks;
     }
 
-    public static Comparator<Student> getComparator(){
-        Comparator<Student> comp = new Comparator<Student>(){
-            @Override
-            public int compare(Student s1, Student s2){
-                return s2.marks - s1.marks;
-            }
-        };
-        return comp;
-    }
-
     int getId(){
         return this.id;
     }
@@ -36,36 +23,97 @@ class Student{
     String getName(){
         return this.name;
     }
+
+    int getMarks(){
+        return this.marks;
+    }
+}
+
+class Node {
+    Student student;
+    Node left;
+    Node right;
+
+    public Node(Student student){
+        this.student = student;
+    }
+
+    Student getStudent(){
+        return this.student;
+    }
+
+    public Node getLeft() {
+        return left;
+    }
+
+    public Node getRight() {
+        return right;
+    }
+
+    public void setLeft(Node left) {
+        this.left = left;
+    }
+
+    public void setRight(Node right) {
+        this.right = right;
+    }
 }
 
 class StudentMarks{
 
     Map<Integer,Student> studentMap;
-    PriorityQueue<Student> marksList;
+    Node root;
 
     StudentMarks(){
         this.studentMap = new HashMap<Integer,Student>();
-        this.marksList = new PriorityQueue<Student>(Student.getComparator());
+        this.root = null;
+    }
+
+    Node insertUtils(Node root, Student student){
+        if (root == null){
+            Node newNode = new Node(student);
+            return newNode;
+        }
+
+        if (student.getMarks() < root.student.getMarks()){
+            root.setLeft(insertUtils(root.getLeft(), student));
+        }
+        else{
+            root.setRight(insertUtils(root.getRight(), student));
+        }
+
+        return root;
     }
 
     void insert(Student student){
         this.studentMap.put(student.getId(), student);
-        this.marksList.add(student);
+        this.root = insertUtils(this.root, student);
     }
 
     Student find_by_id(int id){
         return this.studentMap.get(id);
     }
+    
+    void find_topper_utils(Node root, int[] topK,List<Student> toppers){
+        if (root == null || topK[0] < 0){
+            return;
+        }
+
+        find_topper_utils(root.getRight(), topK, toppers);
+
+        topK[0] -= 1;
+        if (topK[0] >= 0){
+            toppers.add(root.getStudent());
+        }
+
+        find_topper_utils(root.getLeft(), topK, toppers);
+    }
 
     List<Student> find_topper(int topK){
-        List<Student> res = new ArrayList<Student>();
-        Iterator<Student> it = this.marksList.iterator();
-        int i = 0;
-        while (it.hasNext() && i < topK){
-            res.add(it.next());
-            i++;
-        }
-        return res;
+        List<Student> toppers = new ArrayList<Student>();
+        int[] k = {topK};
+        find_topper_utils(root, k, toppers);
+        return toppers;
     }
 
     public static void main(String[] args){

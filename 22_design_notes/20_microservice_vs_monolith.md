@@ -34,7 +34,8 @@ domain-specific concerns into separate, independent code bases.
 2. **Flexible scaling** – If a microservice reaches its load capacity, new instances of that service can rapidly be deployed to   
    the accompanying cluster to help relieve pressure. We are now multi-tenanant and stateless with customers spread across 
    multiple instances. Now we can support much larger instance sizes. 
-3. **Continuous deployment** – We now have frequent and faster release cycles. Before we would push out updates once a week and now we can do so about two to three times a day. 
+3. **Continuous deployment** – We now have frequent and faster release cycles. Before we would push out updates once a week and 
+   now we can do so about two to three times a day. 
 4. **Highly maintainable and testable** – Teams can experiment with new features and roll back if something doesn’t work. 
    This makes it easier to update code and accelerates time-to-market for new features. Plus, it is easy to isolate and fix 
    faults and bugs in individual services.

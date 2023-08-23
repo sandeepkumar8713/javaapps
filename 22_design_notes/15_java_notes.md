@@ -243,6 +243,7 @@ https://docs.oracle.com/javase/8/docs/api/java/util/Date.html#compareTo-java.uti
     3. check if element exists
     4. Get element by index
     5. find index of element
+    6. Iterator, move forward and move backward(pass size)
 
 --------------------------------------------
 **Misc 1**
@@ -358,9 +359,9 @@ lastElement = iterator.next() }
     import java.util.PriorityQueue;
     PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>();
     minHeap.add(item);
-    first = minHeap.peek(); 
+    first = minHeap.peek(); // do not delete
     first minHeap.remove();
-    first = minHeap.poll(); // do not delete
+    first = minHeap.poll(); 
     queue.remove("Geeks"); // remove specified element, return True or false
 
     PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());

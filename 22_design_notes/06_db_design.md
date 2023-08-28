@@ -112,7 +112,7 @@ Link : https://www.freecodecamp.org/news/database-indexing-at-a-glance-bb50809d4
 **Disadvantages of Primary Index**:
 1. Since the primary index contains a direct reference to the data block address through the virtual address space & \
    disk blocks are physically organized in the order of the index key, every time the **OS does some disk page split** due \
-   to DML operations like INSERT / UPDATE / DELETE, the **primary index also needs to be updated**. So DML operations puts \
+   to **DML operations** like INSERT / UPDATE / DELETE, the **primary index also needs to be updated**. So DML operations puts \
    some pressure on the performance of the primary index.
 
 ## Secondary Index :
@@ -162,7 +162,7 @@ Link : https://www.freecodecamp.org/news/database-indexing-at-a-glance-bb50809d4
 2. With DML operations, **indices are updated**, so write operations are quite costly with indexes. The more indices you have,\
    the greater the cost. Indexes are used to make read operations faster. So if you have a system that is write heavy but\
    not read heavy, think hard about whether you need an index or not.
-3. Cardinality is important — **cardinality means the number of distinct values in a column**. If you create an index in a column \
+3. Cardinality is important — **cardinality means the number of distinct values in a column**. If you create an index in a column\
    that has low cardinality, that’s not going to be beneficial since the index should reduce search space. Low cardinality \
    does not significantly reduce search space.
 4. Indices might need some **maintenance** as well if **old data** still remains in the index. They need to be deleted otherwise \

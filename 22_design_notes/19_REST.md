@@ -20,8 +20,10 @@ header content
 The request also contains **Cookies**,
 
 **Step 6.** Server handles the incoming request
-HTTP request made from browsers are handled by a special software running on server - commonly known as **web servers** e.g. **Apache, IIS, Django, Uvicorn** etc. 
-**Web server** passes on the request to the proper **request handler** - a program written to handle web services e.g. PHP, ASP.NET, Ruby, Servlets
+HTTP request made from browsers are handled by a special software running on server - commonly known as **web servers** e.g. 
+**Apache, IIS, WSGI, Uvicorn** etc. 
+**Web server** passes on the request to the proper **request handler** - a program written to handle web services e.g. PHP, ASP.
+NET, Ruby, Servlets
 
 **Step 7.** Browser receives the HTTP response
 Following is a very brief summary of what a status code denotes:
@@ -70,8 +72,8 @@ content of a webpage by calling an AJAX request and updating the web elements us
    number of requests sent to the server. Responses should include information that allows clients to determine whether \
    the response can be cached, and for how long.
 
-4. **Layered system**: A RESTful API should be designed as a layered system, where each layer provides a **specific set of functionalities**.  This allows for    
-   greater flexibility in the system, as layers can be added, removed, or modified without affecting the rest of the system.
+4. **Layered system**: A RESTful API should be designed as a layered system, where each layer provides a **specific set of functionalities**.  
+   This allows for greater flexibility in the system, as layers can be added, removed, or modified without affecting the rest of the system.
 
 5. **Uniform interface**: The uniform interface constraint defines the standard interface that all components of the API must \
    adhere to. This includes the use of standard **HTTP methods (GET, POST, PUT, DELETE)** for CRUD operations, as well as a \

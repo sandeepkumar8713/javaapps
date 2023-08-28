@@ -75,8 +75,8 @@ when being updated.
 For **transactional** things go for MySQL because it provides a **lock-in** feature and supports **ACID** transactions.
 
 ## Decision : 
-1. In distributed systems, it is a common way that data centers are kept in **different locations**, mostly on different machines \
-   and networks. One of the reasons for the emergence of **NoSQL** databases is to easily \
+1. In distributed systems, it is a common way that data centers are kept in **different locations**, mostly on different
+   machines and networks. One of the reasons for the emergence of **NoSQL** databases is to easily \
    **overcome the Single Point of Failure** problem.
 2. Relational databases mostly stored in the data center is in a single network infrastructure that creates a kind of single \
    point of failure situation. Relational databases prevent distribute data from different nodes. For this reason, NoSQL \

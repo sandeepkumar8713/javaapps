@@ -97,5 +97,5 @@ Basically, there are four types of NoSQL databases.
 7. Adding new data in SQL database **requires some changes** to be made like backfilling data, altering schemas.	
    New data can be **easily inserted** in NoSQL databases as it does not require any prior steps.
 
-8. Not suitable for **hierarchical data** storage.	
+8. **Not suitable for hierarchical data** storage.	
    **Suitable** for hierarchical data storage and storing large data sets (E.g. Big Data).

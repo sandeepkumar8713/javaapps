@@ -1,3 +1,7 @@
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 // Each class accepts a vistor interface and a common function of vistor is called.
 // This common function is overloaded with different types of classes.
 // What type code will be executed is based on the type of object passed in the common function.
@@ -11,7 +15,7 @@ interface ItemElement {
 	public int accept(ShoppingCartVisitor visitor);
 }
 
-class Book implements ItemElement {
+class Book implements ItemElement, java.io.Serializable {
 
 	private int price;
 	private String isbnNumber;
@@ -98,14 +102,6 @@ class ShoppingCartVisitorImpl implements ShoppingCartVisitor {
 
 class ShoppingCartClient {
 
-	public static void main(String[] args) {
-		ItemElement[] items = new ItemElement[]{new Book(20, "1234"),new Book(100, "5678"),
-				new Fruit(10, 2, "Banana"), new Fruit(5, 5, "Apple")};
-		
-		int total = calculatePrice(items);
-		System.out.println("Total Cost = "+total);
-	}
-
 	private static int calculatePrice(ItemElement[] items) {
 		ShoppingCartVisitor visitor = new ShoppingCartVisitorImpl();
 		int sum=0;
@@ -115,4 +111,29 @@ class ShoppingCartClient {
 		return sum;
 	}
 
+	public static void main(String[] args) {
+
+		ItemElement[] items = new ItemElement[]{new Book(20, "1234"),new Book(100, "5678"),
+				new Fruit(10, 2, "Banana"), new Fruit(5, 5, "Apple")};
+		
+		int total = calculatePrice(items);
+		System.out.println("Total Cost = " + total);
+
+		// Checking if same object value maps to different key in hash set.
+		Set<Book> books = new HashSet<Book>();
+		Book a = new Book(20, "1234");
+		Book b = new Book(20, "1234");
+
+		System.out.println(a.hashCode());
+		System.out.println(b.hashCode());
+		System.out.println(a.equals(b));
+
+		books.add(a);
+		books.add(b);
+		System.out.println(books.size());
+
+		Set<String> uniqueSet = new HashSet<>(books.size());
+		Set<Book> uniqueBooks = books.stream().filter(p -> uniqueSet.add(p.getIsbnNumber())).collect(Collectors.toSet());
+		System.out.println(uniqueBooks.size());
+	}
 }

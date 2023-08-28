@@ -6,6 +6,8 @@
 You might want to consider introducing a wait between retries as a lot of transient problem might take more than a few \
 seconds to clear. In addition, I would recommend a geometrical increase in wait time to give enough time for system to recover:
 
+**Try Catch**
+
 ```
 import time
 

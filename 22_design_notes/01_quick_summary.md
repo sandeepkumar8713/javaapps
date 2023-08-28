@@ -34,7 +34,7 @@ Using OAuth 2.0, access requests are initiated by the Client, e.g., a mobile app
 desktop application, etc. The token request, exchange, and response follow this general flow:
 
 1. The Client requests authorization (authorization request) from the Authorization server, supplying the **client id and secret** to as identification; it also provides the **scopes and an endpoint URI** (redirect URI) to send the Access Token or the Authorization Code to.
-2. The Authorization server **authenticates** the Client and verifies that the requested scopes are permitted.
+2. The Authorization server **authenticates** the Client and verifies that the requested **scopes are permitted**.
 3. The **Resource owner** interacts with the Authorization server to **grant access**.
 4. The Authorization server **redirects** back to the Client with either an Authorization Code or **Access Token**, depending on the grant type, as it will be explained in the next section. A **Refresh Token** may also be returned.
 5. With the Access Token, the Client requests access to the **resource** from the Resource server.

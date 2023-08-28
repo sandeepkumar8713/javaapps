@@ -28,7 +28,7 @@ Medium : https://medium.com/startlovingyourself/api-design-for-microservices-a48
 1. This is where we need to be very careful as it gives lot of information to consumer about your api when it is not\
     working as expected. We should always try to come up with minimal required status codes, messages while working\
     on writing new api. 
-2. Lets assumer we are writing an api which process payment for given customer order:
+2. Lets assume we are writing an api which process payment for given customer order:
 
     VALIDATION_ERROR when given input is not correct ex, few fields might be blank etc. \
     ORDER_NOT_FOUND when don’t find order with given info. \
@@ -37,7 +37,7 @@ Medium : https://medium.com/startlovingyourself/api-design-for-microservices-a48
     INVALID_AMOUND invalid amount \
     TECHNICAL_ERROR
 
-3. If we use TECNICAL_ERROR for each case, consumer will have difficulty in understanding the output of our api when\
+3. If we use TECNICAL_ERROR for each case, consumer will have **difficulty in understanding** the output of our api when\
    something goes wrong. 
 
 4. **Suggestions** : 
@@ -54,7 +54,7 @@ Medium : https://medium.com/startlovingyourself/api-design-for-microservices-a48
 3. **Suggestions** : 
     1. Domain class(entity/document) can have many fields, but we might not want to send all to consumer. Have \
        **dto(Data transfer object) classes with required fields**.
-    2. When you think about comparing two POJO(Plain Old Java Object, object without restriction) objects, you care about \
+    2. When you think about comparing two **POJO**(Plain Old Java Object, object without restriction) objects, you care about \
        all the fields but domain object can be compared by just using ids.
     3. Controller should **not** have any kind of **business logic**.
     4. **Service layer passes status code, message in the form of custom exception** which needs to be handled at controller \

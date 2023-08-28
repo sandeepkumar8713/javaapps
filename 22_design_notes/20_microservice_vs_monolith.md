@@ -60,3 +60,7 @@ domain-specific concerns into separate, independent code bases.
 6. **Lack of clear ownership** – As more services are introduced, so are the number of teams running those services. Over
    time it becomes difficult to know the available services a team can leverage and who to contact for support.
 
+Main points 
+1. **Agility** 
+2. **deployment, debugging, dependencies, testing**
+2. **Reliability, Tech-flexibilty**

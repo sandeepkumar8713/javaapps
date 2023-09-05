@@ -10,7 +10,7 @@ Link : https://www.geeksforgeeks.org/lambda-expressions-java-8/
 **Functionalities**
 1. Enable to treat functionality as a method argument, or **code as data**.
 2. A function that can be created **without belonging to any class**.
-3. A lambda expression can be passed around as if it was **an object and executed on demand**.
+3. A lambda expression can be **passed** around as if it was **an object and executed on demand**.
 
 ```java
 interface FuncInterface

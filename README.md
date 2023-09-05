@@ -11,11 +11,13 @@ java HelloWorld
 ```
 
 ## Quick Links
-1. [Reading Guide](22_design_notes/00_reading.md)
+1. [Reading Guide](reading_guide.md)
 2. [Java Notes](22_design_notes/15_java_notes.md)
 3. [HLD Golden Rules](22_design_notes/03_hld_golden_rules.md)
 4. [LLD Approach](22_design_notes/04_lld_approach.md)
 5. [Java Theory](20_java_theory/01_intro.md)
+6. [HLD Summary](27_summary/01_summary_of_HLD.md)
+7. [Component Summary](27_summary/02_summary_of_components.md)
 
 ## Design Theory 
 1. [SQL Queries](23_sql/04_common_queries.md)

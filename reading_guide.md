@@ -13,7 +13,7 @@
    LLD Approach
    SOLID Scalar notes
 
-5. REST, Microservice vs Monolith, SQL vs NoSQL, ACID vs CAP
+5. REST, **Microservice vs Monolith, SQL vs NoSQL**, ACID vs CAP
    Quick Summary : (Zookeeper, Oauth2.0, API Gateway)
    LLD details : **DB Design, API Design**, Error Handling (retry), Race condition
    HLD details : Redis, Load Balancer, CI/CD steps, Consistent hashing
@@ -22,11 +22,18 @@
    Distributed Cache (systemdesign/03_High_level_design/19_distrubuted_cache)
    Distributed Queue (systemdesign/03_High_level_design/20_distributed_queue)
    Pub sub           (systemdesign/03_High_level_design/21_pub_sub)
+   **Redis**
 
-7. **Java Theory**
+7. **Java Theory** 
+   (Intro: SpringBoot Annotation, Hash Set, Java Bean, Serilization, Singleton cloning, foreach, JPA)
+   (Streams, lambda, optional class, New date API)
    **Python Theory**
+   (GIL, Memory management, inheritance, decorators, async io)
+   (miscellaneous : Data idmpotency, parquet file, Docker, k8s, pytest)
 
 8. **Feedback**
 
-9. **Java Programs**
-   **Python Programs**
+9. **Java Programs** (notes)
+   **Python Programs** (notes, approach)
+
+10. **Read** High level questions from System design

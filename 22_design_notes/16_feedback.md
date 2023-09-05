@@ -37,8 +37,10 @@
 3. Read about **fluent APIs**.
 4. For **principle role**, we should know the language in depth (implementation details of class, hashmap).
 5. If we lot of parquet files, to be processed. We can have multiple queues(10) to process them. To map a file to a queue,
-   we will use the **metadata of the parquet files**, using this info we can create hash. Since file have 3 columns, which make 
-   a unique id. If we hash the metadata. We can map to it a range corresponding to a queue to be processed.
+   we will use the **metadata of the parquet files**, using this info we can create hash. Since file have 3 columns, which make a unique id. If we hash the metadata. We can map to it a range corresponding to a queue to be processed.
+6. **ASGI** for server
+7. **HTTPS** working
+
 
 ## Design Guru
 

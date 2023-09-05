@@ -162,7 +162,7 @@
     import java.util.Arrays;
     Arrays.sort(intervals, (o1, o2) -> o1[1] - o2[1]); // For array of objects
 --------------------------------------------
-**Date Formatter**
+**Date Formatter(old)**
 
 https://docs.oracle.com/javase/8/docs/api/java/util/Date.html#compareTo-java.util.Date-
 
@@ -238,12 +238,13 @@ https://docs.oracle.com/javase/8/docs/api/java/util/Date.html#compareTo-java.uti
     int[] arr = new int{3, 5, 1, 4, 2};
     int indexOfTwo = ArrayUtils.indexOf(arr, 2);
 
+**Follow this**
     1. remove by index
     2. remove by value
     3. check if element exists
     4. Get element by index
     5. find index of element
-    6. Iterator, move forward and move backward(pass size)
+    6. ListIterator, move forward and move backward(pass size)
 
 --------------------------------------------
 **Misc 1**
@@ -421,6 +422,20 @@ lastElement = iterator.next() }
         }
         return false;
     }
+
+--------------------------------------------
+**Clone**
+
+class SuperClass implements Cloneable {
+	int i = 10;
+
+	@Override
+	protected Object clone()
+		throws CloneNotSupportedException
+	{
+		return super.clone();
+	}
+}
 
 --------------------------------------------
 **Old notes**

@@ -16,8 +16,8 @@ It will fire up a **servlet container** and serve up our service.
 
 1. The **@Controller** annotation indicates that a particular class serves the role of a controller. Spring does not require you to extend 
    any controller base class or reference the Servlet API. 
-2. The @Controller annotation acts as a **stereotype** for the annotated class, indicating its role. The **dispatcher** scans such annotated classes
-   for **mapped methods** and detects **@RequestMapping** annotations.
+2. The @Controller annotation acts as a **stereotype** for the annotated class, indicating its role. The **dispatcher** scans such
+   annotated classes for **mapped methods** and detects **@RequestMapping** annotations.
 3. However, the @Controller stereotype also allows for **autodetection**, aligned with Spring general support for detecting component classes
    in the classpath and **auto-registering bean** definitions for them.
 
@@ -281,4 +281,4 @@ public static void print(String n)
 2. JPA is a **specfication** given by oracle. **Hibernate is its implementation**.
 3. Other implmentations are **Eclipse Link**, **Open JDA**.
 4. H2 is a in-memory DB.
-5. **EntityManagerFactory** and **EntityManager** interface provided by JPA to perform CRUD operations.
+5. **EntityManagerFactory** and **EntityManager** interface provided by JPA to perform **CRUD** operations.

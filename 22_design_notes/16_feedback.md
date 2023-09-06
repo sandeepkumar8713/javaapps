@@ -29,7 +29,10 @@
    services arrive?(We could use **consistent hashing** to distribute messages.) (by **increasing partition and broker**)
 6. How API can be **created** and how **REST** calls can do?
 7. Answer **bosscoder** design questions.
-8. How to decide on **TTL** of the cache.
+8. How to decide on **TTL** of the cache(Plume).
+9. **ASGI** for server
+10. **HTTPS** working
+11. Which **no-sql** to choose based on data?
 
 ## Language Specific
 1. Add a good **spring** and **spring boot** rest example with **DB, S3 and external api call**.
@@ -38,9 +41,6 @@
 4. For **principle role**, we should know the language in depth (implementation details of class, hashmap).
 5. If we lot of parquet files, to be processed. We can have multiple queues(10) to process them. To map a file to a queue,
    we will use the **metadata of the parquet files**, using this info we can create hash. Since file have 3 columns, which make a unique id. If we hash the metadata. We can map to it a range corresponding to a queue to be processed.
-6. **ASGI** for server
-7. **HTTPS** working
-
 
 ## Design Guru
 

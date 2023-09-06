@@ -28,7 +28,7 @@
    (Intro: SpringBoot Annotation, Hash Set, Java Bean, Serilization, Singleton cloning, foreach, JPA)
    (Streams, lambda, optional class, New date API)
    **Python Theory**
-   (GIL, Memory management, inheritance, decorators, async io)
+   (GIL, Memory management, inheritance, decorators, async io, generics)
    (miscellaneous : Data idmpotency, parquet file, Docker, k8s, pytest)
 
 8. **Feedback**

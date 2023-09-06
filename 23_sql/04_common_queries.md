@@ -155,3 +155,8 @@ Calculate 7 day moving average from a table that contains price and date timesta
 9. rank() over(PARTITION BY DepartmentId order by salary desc) as salRank  // **Rank salary in each dept**
 
 10. where sent_date between current_date - interval '30 days' and current_date; // **Data for last 30 days**
+
+11. select DEPT_ID, Name, Salary from department where (DEPT_ID, Salary) in (
+        select DEPT_ID, max(salary) from department 
+        group by DEPT_ID                              //**Highest salary in each dept**
+    );                    

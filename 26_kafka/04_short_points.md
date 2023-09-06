@@ -16,16 +16,16 @@
 13. Broker keeps track of **last offset** of each partition.
 
 ## Why Kafka
-1. RabbitMQ’s architecture is designed for complex message routing. It uses the push model. Producers send messages to consumers with    
-   different rules. 
-   Kafka uses partition-based design for real-time, high-throughput stream processing. It uses the pull model. Producers publish messages to topics and partitions that consumers subscribe to.
+1. RabbitMQ’s architecture is designed for **complex message routing**. It uses the **push model**. Producers send messages to consumers 
+   with  different rules. 
+   Kafka uses partition-based design for **real-time, high-throughput** stream processing. It uses the **pull model**. Producers publish messages to topics and partitions that consumers subscribe to.
 
-2. RabbitMQ brokers monitor message consumption. It deletes messages after they’re consumed. It supports message priorities. 
-   Consumers keep track of message retrieval with an offset tracker. Kafka retains messages according to the retention policy. There’s no message priority. 
+2. RabbitMQ brokers monitor message consumption. It **deletes messages** after they’re consumed. It supports message priorities. 
+   Consumers keep track of message retrieval with an offset tracker. Kafka **retains messages** according to the retention policy. There’s no message priority. 
 
-3. RabbitMQ has low latency. It sends thousands of messages per second.
-   Kafka has real-time transmission of up to millions of messages per second.
+3. RabbitMQ has low latency. It sends **thousands of messages per second**.
+   Kafka has real-time transmission of up to **millions of messages per second**.
 
-4. RabbitMQ supports a broad range of languages and legacy protocols.
-   Kafka has limited choices of programming languages. It uses binary protocol over TCP for data transmission
+4. RabbitMQ supports a broad range of languages and **legacy protocols**.
+   Kafka has **limited choices of programming languages**. It uses binary protocol over **TCP** for data transmission
 

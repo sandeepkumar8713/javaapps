@@ -392,6 +392,8 @@ lastElement = iterator.next() }
     char[] arr = { 'p', 'q', 'r', 's' };
     String str = String.valueOf(arr);
 
+    leftMin[i] = Math.min(leftMin[i-1], arr[i]);
+
 ---------------------------------------------
 **Sample**
 

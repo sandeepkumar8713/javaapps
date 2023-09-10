@@ -27,9 +27,10 @@
 7. **Java Theory** 
    (Intro: SpringBoot Annotation, Hash Set, Java Bean, Serilization, Singleton cloning, foreach, JPA)
    (Streams, lambda, optional class, New date API)
+   **Docker** (22_design_notes/23_docker.md)
    **Python Theory**
    (GIL, Memory management, inheritance, decorators, async io, generics)
-   (miscellaneous : Data idmpotency, parquet file, Docker, k8s, pytest)
+   (miscellaneous : Data idmpotency, parquet file, **Docker, k8s** pytest)
 
 8. **Feedback**
 

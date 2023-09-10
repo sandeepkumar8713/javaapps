@@ -10,16 +10,17 @@ How do you define the **controller layer**.
     2. **@ComponentScan**: enable @Component scan on the package where the application is located.
     3. **@Configuration**: allow to register **extra beans** in the context or import additional **configuration classes**.
 
-It will fire up a **servlet container** and serve up our service.
+It will fire up a **servlet container** and serve up our service. By default, spring boot embedded **tomcat server**, which 
+listens for HTTP requests on port **8080**.
 
 ## Controller
 
-1. The **@Controller** annotation indicates that a particular class serves the role of a controller. Spring does not require you to extend 
-   any controller base class or reference the Servlet API. 
+1. The **@Controller** annotation indicates that a particular class serves the role of a controller. Spring does not require you 
+   to extend any controller base class or reference the Servlet API. 
 2. The @Controller annotation acts as a **stereotype** for the annotated class, indicating its role. The **dispatcher** scans such
    annotated classes for **mapped methods** and detects **@RequestMapping** annotations.
-3. However, the @Controller stereotype also allows for **autodetection**, aligned with Spring general support for detecting component classes
-   in the classpath and **auto-registering bean** definitions for them.
+3. However, the @Controller stereotype also allows for **autodetection**, aligned with Spring general support for detecting 
+   component classes in the classpath and **auto-registering bean** definitions for them.
 
 1. Spring 4.0 introduced the **@RestController** annotation in order to simplify the creation of RESTful web services. It's a 
    convenient annotation that **combines @Controller and @ResponseBody**, which eliminates the need to annotate every
@@ -35,6 +36,33 @@ It will fire up a **servlet container** and serve up our service.
 2. The **@ResponseBody** annotation tells a controller that the object returned is **automatically serialized** into JSON
    and passed back into the HttpResponse object.
 
+```java
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+@SpringBootApplication
+   @EnableAutoConfiguration
+   @ComponentScan
+   @Configuration
+
+@RestController
+   @Controller
+   @ResponseBody
+
+@GetMapping("/employees")
+@PostMapping("/employees")
+@PutMapping("/employees/{id}")
+   Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
+   }
+
+@ResponseStatus(HttpStatus.OK)
+   
+@RequestMapping(value = "/ex/foos", method = RequestMethod.GET)
+
+@SpringBootTest
+@TestPropertySource
+```
+
 ## Testing in spring boot
 
 1. The **@SpringBootTest** annotation is useful when we need to **bootstrap the entire container**. The annotation works by 
@@ -43,7 +71,7 @@ It will fire up a **servlet container** and serve up our service.
    WebEnvironment.MOCK here so that the container will operate in a **mock servlet environment**.
 3. Next, the **@TestPropertySource** annotation helps configure the locations of properties files specific to our tests. Note 
    that the property file loaded with @TestPropertySource will **override the existing application.properties file**.
-4. The application-integrationtest.properties contains the details to configure the persistence storage.
+4. The application-integrationtest.properties contains the details to **configure the persistence storage**.
 
 ## Java Version Release dates
 Java 8  (18 Mar, 2014)
@@ -54,6 +82,20 @@ Java 17 (14 Sep, 2021)
 
 1. How hash set works?
 2. In Java, while adding objects to set. How to make sure only **unique value objects** are added.
+
+**Hashing** is a process of converting an object into integer form by using the method **hashCode()**. It’s necessary to write the 
+**hashCode()** method properly for better performance of HashMap. 
+
+**hashCode() method**: hashCode() method is used to get the hash code of an object. hashCode() method of the object class 
+**returns the memory reference of an object in integer form**. Definition of hashCode() method is public native hashCode(). It 
+indicates the implementation of hashCode() is native because there is **not any direct method in java to fetch the reference** of the 
+object. It is possible to **provide your implementation of hashCode()**. In HashMap, hashCode() is used to calculate the bucket and 
+therefore calculate the index. 
+
+**equals() method**: This method is used to check whether 2 objects are equal or not. This method is provided by the Object class. 
+You **can override** this in your class to provide your implementation. 
+**HashMap uses equals() to compare the key** to whether they are equal or not. If the equals() method return true, they are equal 
+otherwise not equal. It **compares the object references** or the memory location where the objects are stored in the heap.
 
 In hashing there is a hash function that maps keys to some values. But these hashing function may lead to **collision** that is 
 two or more keys are mapped to same value. **Chain hashing** avoids collision. The idea is to make each cell of hash table
@@ -71,7 +113,7 @@ Example: **hashIndex = key % noOfBuckets**
 **HashMap** (A **non-synchronized** faster implementation of hashing)
 
 **Overview**
-1. HashMap implements **Map** interface while TreeMap implements **SortedMap** interface. A Sorted Map interface is a
+1. HashMap implements **Map** interface while **TreeMap** implements **SortedMap** interface. A Sorted Map interface is a
    child of Map.
 2. HashMap implements **Hashing**, while TreeMap implements **Red-Black Tree**(a Self Balancing Binary Search Tree). 
    Therefore all differences between Hashing and Balanced Binary Search Tree apply here.
@@ -99,7 +141,7 @@ set.add(b);
 System.out.println(set.size());   // 2
 ```
 
-In above example, 2 different objects having different address. Two different hashcode will be generated. So they are treated 
+In above example, 2 different objects **having different address**. Two different hashcode will be generated. So they are treated 
 as different entitie in HashSet.
 
 Unless you **@Override the hashCode()** method and implement your own version, your class will use the default method
@@ -126,15 +168,15 @@ A JavaBean is a Java class that should follow the following **conventions**:
 
 ```java
 public class Employee implements java.io.Serializable{  
-    private int id;  
-    private String name;  
-    
-    public Employee(){}
+   private int id;  
+   private String name;  
+   
+   public Employee(){}
 
-    public void setId(int id){this.id=id;}  
-    public int getId(){return id;}  
-    public void setName(String name){this.name=name;}  
-    public String getName(){return name;}  
+   public void setId(int id){this.id=id;}  
+   public int getId(){return id;}  
+   public void setName(String name){this.name=name;}  
+   public String getName(){return name;}  
 }
 ```
 
@@ -185,7 +227,8 @@ If you **don't want to serialize** any data member of a class, you can mark it a
 3. The sender and receiver must have the same SerialVersionUID, otherwise, **InvalidClassException** will be thrown when
    you deserialize the object. 
 4. We can also declare our **own SerialVersionUID in the Serializable class.** To do so, you need to create a field 
-   SerialVersionUID and assign a value to it. It must be of the **long type with static and final**. It is suggested to explicitly declare the serialVersionUID field in the class and have it **private** also.
+   SerialVersionUID and assign a value to it. It must be of the **long type with static and final**. It is suggested to explicitly 
+   declare the serialVersionUID field in the class and have it **private** also.
 
 ```java
 private static final long serialVersionUID=1L; 
@@ -244,6 +287,8 @@ class Singleton implements Serializable {
 3. **Using Cloning**
 **Overide clone function** to throw exception or return the same instance again.
 
+[Fix Example](../01_basic/16_clone_singleton.java)
+
 ## Java 8 features
 1. forEach
 2. streams
@@ -251,18 +296,18 @@ class Singleton implements Serializable {
 4. Optional class
 5. New Date 
 
-[Fix Example](../01_basic/16_clone_singleton.java)
-
 ## forEach (Introducted in Java 8)
 
 The forEach() method of ArrayList used to perform the certain operation for each element in **ArrayList**. This method
 traverses each element of the Iterable of ArrayList until **all elements have been processed** by the method or an
-**exception is raised**. The operation is performed in the order of iteration **if that order is specified** by the method. Exceptions thrown by the Operation are passed to the caller.
+**exception is raised**. The operation is performed in the order of iteration **if that order is specified** by the method. Exceptions 
+thrown by the Operation are passed to the caller.
 
 You **may send Lambda Expression** as an argument to the “forEach” method, which accepts the 
 **Functional Interface** as a single parameter.
 
-Until and unless an overriding class has **specified a concurrent modification policy**, the operation **cannot modify** the underlying source of elements so we can say that **behavior of this method is unspecified**.
+Until and unless an overriding class has **specified a concurrent modification policy**, the operation **cannot modify** the underlying 
+source of elements so we can say that **behavior of this method is unspecified**.
 
 ```java
 ArrayList<Integer> Numbers = new ArrayList<Integer>();

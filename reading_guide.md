@@ -28,13 +28,15 @@
    (Intro: SpringBoot Annotation, Hash Set, Java Bean, Serilization, Singleton cloning, foreach, JPA)
    (Streams, lambda, optional class, New date API)
    **Docker** (22_design_notes/23_docker.md)
-   **Python Theory**
+   **Spring Boot Application**
+   **Java Programs** (notes)
+   
+8. **Python Theory**
    (GIL, Memory management, inheritance, decorators, async io, generics)
-   (miscellaneous : Data idmpotency, parquet file, **Docker, k8s** pytest)
-
-8. **Feedback**
-
-9. **Java Programs** (notes)
+   (miscellaneous : Data idempotency, parquet file, **Docker, k8s** pytest)
    **Python Programs** (notes, approach)
 
+9. **Feedback**
+
 10. **Read** High level questions from System design
+    Summary (27_summary/01_summary_of_HLD.md)

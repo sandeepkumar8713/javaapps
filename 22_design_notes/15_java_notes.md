@@ -333,8 +333,12 @@ lastElement = iterator.next() }
     StringBuffer sBuffer1=new StringBuffer("");
     sBuffer1.append(numToChar(v));
     sBuffer1.reverse();
+    sBuffer1.setLength(0);
     return sBuffer1.toString();
 
+    // StringBuffer provides Thread safety but at a performance cost.
+    // StringBuilder, is not thread safe so it is faster
+    
     int[][] intervals = {{1,2},{2,3},{3,4},{1,3}};
 
     this.minTime = Math.min(this.minTime, inpStartTime);

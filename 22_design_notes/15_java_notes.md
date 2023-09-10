@@ -2,132 +2,141 @@
 
 --------------------------------------------
 
-    class ExceptionHandling {
-        public static void main(String[] args) {
-            try{
-                System.out.println(10/0);
-            }
-            catch(ArithmeticException ae){
-                System.out.println(ae.getMessage());
-                System.out.println(ae.toString());
-                ae.printStackTrace();
-                throw ae;
-            }
+```java
+class ExceptionHandling {
+    public static void main(String[] args) {
+        try{
+            System.out.println(10/0);
+        }
+        catch(ArithmeticException ae){
+            System.out.println(ae.getMessage());
+            System.out.println(ae.toString());
+            ae.printStackTrace();
+            throw ae;
         }
     }
+}
+```
 
 --------------------------------------------
 
-    enum Months {
-        JAN(1), FEB(2), MAR(3);
+```java
+enum Months {
+    JAN(1), FEB(2), MAR(3);
 
-        private int num;
+    private int num;
 
-        Months(int num){
-            this.num = num;
-        }
-
-        public int getMonths(){
-            return this.num;
-        }
-
-        public void setMonths(int num){
-            this.num = num;
-        }
+    Months(int num){
+        this.num = num;
     }
+
+    public int getMonths(){
+        return this.num;
+    }
+
+    public void setMonths(int num){
+        this.num = num;
+    }
+}
+```
 
 --------------------------------------------
 
-    abstract class Computer {
-        
-        public abstract String getRAM();
-        public abstract String getHDD();
-        public abstract String getCPU();
-        
-        @Override
-        public String toString(){
-            return "RAM= "+this.getRAM()+", HDD="+this.getHDD()+", CPU="+this.getCPU();
-        }
-    }
-
---------------------------------------------
-
-    interface ComputerAbstractFactory {
-
-        public Computer createComputer();
-
-    }
-
---------------------------------------------
-
+```java
+abstract class Computer {
+    
+    public abstract String getRAM();
+    public abstract String getHDD();
+    public abstract String getCPU();
+    
     @Override
-	public Object clone() throws CloneNotSupportedException{
-			List<String> temp = new ArrayList<String>();
-			for(String s : this.getEmpList()){
-				temp.add(s);
-			}
-			return new Employees(temp);
-	}
-
-    Employees empsNew1 = (Employees) emps.clone();
---------------------------------------------
-
-    ArrayList<Object> al = new ArrayList<Object>();
-    al.add(20);
-    al.add("b");
-
-    Iterator<Object> itr = al.iterator();
-    while(itr.hasNext()){
-        Object obj = itr.next();
-        System.out.println(obj);
+    public String toString(){
+        return "RAM= "+this.getRAM()+", HDD="+this.getHDD()+", CPU="+this.getCPU();
     }
+}
+```
 
 --------------------------------------------
 
-    ItemElement[] items = new ItemElement[]{new Book(20, "1234"),new Book(100, "5678"),
-				new Fruit(10, 2, "Banana"), new Fruit(5, 5, "Apple")};
+```java
+interface ComputerAbstractFactory {
+
+    public Computer createComputer();
+
+}
+```
+
+--------------------------------------------
+
+```java
+@Override
+public Object clone() throws CloneNotSupportedException{
+        List<String> temp = new ArrayList<String>();
+        for(String s : this.getEmpList()){
+            temp.add(s);
+        }
+        return new Employees(temp);
+}
+
+Employees empsNew1 = (Employees) emps.clone();
+```
+
+--------------------------------------------
+
+```java
+ItemElement[] items = new ItemElement[]{new Book(20, "1234"),new Book(100, "5678"),
+            new Fruit(10, 2, "Banana"), new Fruit(5, 5, "Apple")};
+```
             
 --------------------------------------------
 
-    class ThreadSafeSingleton {
+```java
+class ThreadSafeSingleton {
 
-        private static ThreadSafeSingleton instance;
-        
-        private ThreadSafeSingleton(){}
-        
-        public static synchronized ThreadSafeSingleton getInstance(){
-            if(instance == null){
-                instance = new ThreadSafeSingleton();
-            }
-            return instance;
+    private static ThreadSafeSingleton instance;
+    
+    private ThreadSafeSingleton(){}
+    
+    public static synchronized ThreadSafeSingleton getInstance(){
+        if(instance == null){
+            instance = new ThreadSafeSingleton();
         }
-        
-    }
+        return instance;
+    }     
+}
+```
 --------------------------------------------
 
-    class ShapeFactory {
+```java
+class ShapeFactory {
 
-        private static final HashMap<ShapeType,Shape> shapes = new HashMap<ShapeType,Shape>();
+    private static final HashMap<ShapeType,Shape> shapes = new HashMap<ShapeType,Shape>();
 
-        public static Shape getShape(ShapeType type) {
-            Shape shapeImpl = shapes.get(type);
+    public static Shape getShape(ShapeType type) {
+        Shape shapeImpl = shapes.get(type);
 
-            if (shapeImpl == null) {
-                if (type.equals(ShapeType.OVAL_FILL)) {
-                    shapeImpl = new Oval(true);
-                } else if (type.equals(ShapeType.OVAL_NOFILL)) {
-                    shapeImpl = new Oval(false);
-                } else if (type.equals(ShapeType.LINE)) {
-                    shapeImpl = new Line();
-                }
-                shapes.put(type, shapeImpl);
+        if (shapeImpl == null) {
+            if (type.equals(ShapeType.OVAL_FILL)) {
+                shapeImpl = new Oval(true);
+            } else if (type.equals(ShapeType.OVAL_NOFILL)) {
+                shapeImpl = new Oval(false);
+            } else if (type.equals(ShapeType.LINE)) {
+                shapeImpl = new Line();
             }
-            return shapeImpl;
+            shapes.put(type, shapeImpl);
         }
+        return shapeImpl;
     }
+}
+```
 
 --------------------------------------------
 ## Watch from here
+
+[Multiple threads](../01_basic/08_multiple_threads.java)
+[Runnable](../01_basic/09_runnable_example.java)
+[Producer](../01_basic/10_producer_consumer.java)
+[Clone Singleton](../01_basic/16_clone_singleton.java)
 
 --------------------------------------------
 **String Matching**
@@ -245,6 +254,17 @@ https://docs.oracle.com/javase/8/docs/api/java/util/Date.html#compareTo-java.uti
     4. Get element by index
     5. find index of element
     6. ListIterator, move forward and move backward(pass size)
+
+**Iterator Example**
+    ArrayList<Object> al = new ArrayList<Object>();
+    al.add(20);
+    al.add("b");
+
+    Iterator<Object> itr = al.iterator();
+    while(itr.hasNext()){
+        Object obj = itr.next();
+        System.out.println(obj);
+    }
 
 --------------------------------------------
 **Misc 1**
@@ -447,7 +467,7 @@ class SuperClass implements Cloneable {
 **Old notes**
 
 It is object of Component class
-boolean test = (t instanceof Component);
+**boolean test = (t instanceof Component);**
 wrapper class have caps String,Short,Long
 if statement execpt boolean value,it gives error for in value
 
@@ -480,12 +500,12 @@ Error throwable exception runtime can be thrown using throw.
 
 Two new empty String objects will produce identical hashcodes.
 
-If the equals() method returns true, the hashCode() comparison == must return true.
-If the hashCode() comparison == returns true, the equals() method might return true.
+**If the equals() method returns true, the hashCode() comparison == must return true.**
+**If the hashCode() comparison == returns true, the equals() method might return true.**
 
-arraylist Yes, always the elements in the collection are ordered.
+arraylist Yes, always the elements in the **collection are ordered**.
 
-The start() method causes this thread to begin execution; the Java Virtual Machine calls the run method of this thread. 
+The **start()** method causes this thread to begin execution; the Java Virtual Machine calls the run method of this thread. 
 
 valid statement
 Thread(Runnable r, String name)

@@ -21,7 +21,7 @@ java HelloWorld
 8. [Docker](22_design_notes/23_docker.md)
 
 ## Design Theory 
-1. [SQL Queries](23_sql/04_common_queries.md)
+1. [SQL Queries](23_sql/00_summary_queries.md)
 2. [REST](22_design_notes/19_REST.md)
 3. [Microservice vs Monolith](22_design_notes/20_microservice_vs_monolith.md)
 4. [SQL vs NoSQL](22_design_notes/21_sql_vs_nosql.md)

@@ -19,6 +19,7 @@ java HelloWorld
 6. [HLD Summary](27_summary/01_summary_of_HLD.md)
 7. [Component Summary](27_summary/02_summary_of_components.md)
 8. [Docker](22_design_notes/23_docker.md)
+9. [Code Review](22_design_notes/24_code_reviews.md)
 
 ## Design Theory 
 1. [SQL Queries](23_sql/00_summary_queries.md)

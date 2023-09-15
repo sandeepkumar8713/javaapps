@@ -16,7 +16,7 @@
 
 8. order by emp_salary DESC OFFSET 3 LIMIT 1; // **4th hihgest salary**
 
-9. rank() over(PARTITION BY DepartmentId order by salary desc) as salRank  // **Rank salary in each dept**
+9. select salary, rank() over(PARTITION BY DepartmentId order by salary desc) as salRank  // **Rank salary in each dept**
 
 10. where sent_date between current_date - interval '30 days' and current_date; // **Data for last 30 days**
 
@@ -28,6 +28,9 @@
 12. SELECT Orders.orderId, Customers.CustomerName, Orders.OrderDate
     FROM Orders
     INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;  // **join statement**
+
+13. DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste'; // **Delete row**
+    DROP TABLE Customers; // **delete table**
 
 13. delete p1 from person p1,person p2 
     where p1.email=p2.email and p1.id>p2.id; // **delete duplicate**

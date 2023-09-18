@@ -9,6 +9,21 @@ https://www.youtube.com/watch?v=hVo3JBDu7hI
 
 Good Link: https://repost.aws/knowledge-center/iam-assume-role-cli
 
+**Identity and access management (IAM)**
+**Security Token Service (STS)**
+**Amazon Resource Names (ARN)**
+
+**Resource, Action, Policy**
+Access deined error (403) to resolve it we create a policy document and attach it to the user.
+
+**Trust relationship (Assume Role)**
+
+3 Ways to set policy
+online portal, aws cli and aws sdk programmtically
+
+STS : service to enables you to request temporary, limited privilege credentials
+It gives out Access token, secret token, session token and expiration.
+
 **Allow self-assume for STS in TF**
 
 ```terraform
@@ -136,3 +151,19 @@ Teradata tutorial
 https://www.tutorialspoint.com/teradata/teradata_architecture.htm
 
 ------------------
+
+## API rate limiting
+1. 80%, 50%, 20%, 30% 
+2. Dynamic rate limiting
+
+## Tensor flow DB integration 
+1. SO file (update shared object)
+2. Read documentation
+3. Increase RAM of individual AMP (Access Module Processor)
+4. Tensorflow naive bayes classifier  with iris data set
+
+## Pedometer
+1. Android phone with gyroscope
+2. Sleep, walk, 
+3. Moving average
+

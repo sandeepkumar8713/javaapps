@@ -3,7 +3,7 @@
 [Link](../../systemdesign/03_High_level_design/19_distrubuted_cache/01_intro.md)
 
 caching system where multiple cache servers coordinate.
-precalculating results, expensive queries, session data, reduce network costs
+**precalculating results, expensive queries, session data, reduce network costs**
 
 **Writing policies**
 Write-through cache(both on db and cache), Write-back cache(first in cache, async in DB), Write-around cache(only in DB) 
@@ -45,7 +45,7 @@ monitoring will be required in case of failures or the addition of new nodes. Fi
 cache servers from the configuration service.
 
 **Distinctive Points**
-hotkey problem, Storage hardware
+hotkey problem(replicas), Storage hardware(specialized or commodity hardware, secondary storage)
 
 ## 2. Distributed Queue
 
@@ -160,14 +160,14 @@ We employ a large number of **low-cost machines (nodes) and partition or divide 
 We **compute the inverted index on the primary node only**. Next, we **communicate the inverted index** (binary blob/file) to the 
 replicas. 
 
+![](images2/04_map_reduce.png)
+
 Note that the Reducers cannot start as long as the Mappers are working. This means that the **cluster manager can use the same node as a Mapper as well as a Reducer**.
 
 The **indexing is performed offline**, not on the user’s critical path.
 So, **we don’t have to wait for the replication of the new index** to respond to the search queries.
 The **strong isolation of indexing and search processes** help indexing and search scale independently and dynamically.
 We utilized a number of nodes, each of which performs **search queries in parallel** on smaller inverted indices.
-
-![](images2/04_map_reduce.png)
 
 
 ## 5. CDN

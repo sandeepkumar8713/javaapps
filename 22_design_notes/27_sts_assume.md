@@ -8,6 +8,9 @@ https://www.youtube.com/watch?v=_ZCTvmaPgao
 https://www.youtube.com/watch?v=hVo3JBDu7hI
 
 Good Link: https://repost.aws/knowledge-center/iam-assume-role-cli
+1. Create an IAM user using the AWS CLI 
+2. Create the IAM policy
+3. Create the JSON file that defines the trust relationship of the IAM role
 
 **Identity and access management (IAM)**
 **Security Token Service (STS)**
@@ -160,7 +163,7 @@ https://www.tutorialspoint.com/teradata/teradata_architecture.htm
 1. SO file (update shared object)
 2. Read documentation
 3. Increase RAM of individual AMP (Access Module Processor)
-4. Tensorflow naive bayes classifier  with iris data set
+4. Tensorflow naive bayes classifier with iris data set
 
 ## Pedometer
 1. Android phone with gyroscope

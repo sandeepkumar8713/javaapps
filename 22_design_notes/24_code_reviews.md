@@ -44,8 +44,8 @@ a) **Maintainability** (Supportability) – The application should require the l
    variables, functions and classes. If you are taking more time to understand the code, then either code needs refactoring or at least 
    comments have to be written to make it clear.
 2. **Testability**: The code should be easy to test. Refactor into a separate function (if required). Use interfaces while talking to 
-   other layers, as interfaces can be mocked easily. Try to avoid static functions, singleton classes as these are not easily testable 
-   by mocks.
+   other layers, as **interfaces** can be mocked easily. Try to avoid static functions, singleton classes as these are not easily 
+   testable by mocks.
 3. **Debuggability**: Provide support to log the flow of control, parameter data and exception details to find the root cause easily. If 
    you are using Log4Net like component then add support for database logging also, as querying the log table is easy.
 5. **Configurability**: Keep the configurable values in place (XML file, database table) so that no code changes are required, if the 
@@ -63,9 +63,10 @@ a) **Maintainability** (Supportability) – The application should require the l
      Scripting (XSS), encrypting the sensitive data (passwords, credit card information etc.)
 **f) Performance**
     1. Use a data type that best suits the needs such as StringBuilder, generic collection classes.
-    2. Lazy loading, asynchronous and parallel processing.
+    2. **Lazy loading, asynchronous and parallel processing**.
     3. Caching and session/application data.
 **g) Scalability** – Consider if it supports a large user base/data? Can this be deployed into web farms?
-**h) Usability** – Put yourself in the shoes of a end-user and ascertain, if the user interface/API is easy to understand and use. If you are not convinced with the user interface design, then start discussing your ideas with the business analyst.
+**h) Usability** – Put yourself in the shoes of a end-user and ascertain, if the user interface/API is easy to understand and use. 
+     If you are not convinced with the user interface design, then start discussing your ideas with the business analyst.
 
 ## 5. Object-Oriented Analysis and Design (OOAD) Principles(SOLID)**

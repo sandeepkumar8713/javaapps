@@ -19,24 +19,26 @@
    HLD details : Redis, Load Balancer, CI/CD steps, Consistent hashing
 
 6. **Kafka**
-   Distributed Cache (systemdesign/03_High_level_design/19_distrubuted_cache)
-   Distributed Queue (systemdesign/03_High_level_design/20_distributed_queue)
-   Pub sub           (systemdesign/03_High_level_design/21_pub_sub)
+   [Distributed Cache](../systemdesign/03_High_level_design/19_distrubuted_cache/01_intro.md)
+   [Distributed Queue ](../systemdesign/03_High_level_design/20_distributed_queue/01_intro.md)
+   [Pub sub           ](../systemdesign/03_High_level_design/21_pub_sub/01_intro.md)
+   [Database          ](../systemdesign/03_High_level_design/30_databases/01_intro.md)
    **Redis**
 
-7. **Java Theory** 
+7. **Read** High level questions from System design
+    [Summary_1](27_summary/01_summary_of_HLD.md)
+    [Summary_2](27_summary/02_summary_of_components.md)
+
+8. **Java Theory** 
    (Intro: SpringBoot Annotation, Hash Set, Java Bean, Serilization, Singleton cloning, foreach, JPA)
    (Streams, lambda, optional class, New date API)
    **Docker** (22_design_notes/23_docker.md)
    **Spring Boot Application**
    **Java Programs** (notes)
    
-8. **Python Theory**
+9. **Python Theory**
    (GIL, Memory management, inheritance, decorators, async io, generics)
    (miscellaneous : Data idempotency, parquet file, **Docker, k8s** pytest)
    **Python Programs** (notes, approach)
 
-9. **Feedback**
-
-10. **Read** High level questions from System design
-    Summary (27_summary/01_summary_of_HLD.md)
+10. **Feedback**

@@ -1,6 +1,7 @@
 # Reading Material
 
 1. All the Object Oriented **design patterns**
+   **OOPS**
 
 2. 8 LLD designs (Bookmyshow, Uber, Flipkart, Parking Lot, Chess, Imdb, Netflix, Notification)
    9 HLD designs **read** (Bookmyshow, Uber, Whatsapp, Twitter, Tiny url, DoorDash, Cricbuzz, Quora)

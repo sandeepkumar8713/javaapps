@@ -3,15 +3,15 @@
 Youtube : https://www.youtube.com/watch?v=tVRyb4HaHgw
 
 ## Requirements : 
-1. Size of parking lot (10k- 20k spots)
+1. **Size of parking lot** (10k- 20k spots)
 2. 4 Entrance and 4 exits
-3. Customer collects the ticket while entring and spot is specified in the ticket.
-4. Parking spot should be nearset to entrance.
-5. Limit/Capacity, Don't assign tickets more than limit
-6. Special spots, like handicap, motercycle, large car, compact car 
-7. Per hour rate.
-8. payment cash/credit card
-9. Monitoring system: Count of entry and exit vehicle. video surveillance
+3. Customer **collects the ticket while entring** and spot is specified in the ticket.
+4. Parking spot should be **nearest to entrance**.
+5. Limit/Capacity, Don't assign tickets **more than limit**
+6. **Special spots**, like handicap, motercycle, large car, compact car 
+7. **Per hour rate**.
+8. payment **cash/credit card**
+9. **Monitoring system**: Count of entry and exit vehicle. video surveillance
 10. The system should be extensible to other parking installations as well.
 
 ## Design Approach : 
@@ -45,16 +45,15 @@ We will have a Dict of key : terminals value : min heap.\
 **TrarifCaluclator** (calcualate(time, spotType)) \
 **Logger** (logMessage()) \
 
-**Parkinglot** (Singleton) : This will include all the other components. \
+**Parkinglot** (**Singleton**) : This will include all the other components. \
 We can use **factory design** pattern to instantiate those object. We should pass the configuration object(like spot type, \
 no. of spots, printer, payment process). \
-We should instantiate entry,exit terminal and Parking assignment startergy. \
-We should instantiate payment process and pass those to exit terminal object. \
-We should instantiate printer and pass those to terminal object.
+We should instantiate **entry,exit terminal** and Parking assignment startergy. \
+We should instantiate **payment process and pass those to exit terminal object**. \
+We should instantiate **printer and pass those to terminal object**.
 
 ## Working : 
 When the user calls the getParkingSpot(terminal). Based on the terminal id we will retrive min heap for the terminal. \
-Pop the top element from the min heap, it will give us the spot which is nearest to the entrance. We will mark it as \
-reserved. We will remove it from avilable set and add in reserved set. We will also remove it from all the other min \
-heaps as well. \
-Concurrency can be handled through locks. 
+Pop the top element from the **min heap**, it will give us the spot which is nearest to the entrance. We will mark it as \
+reserved. We will remove it from **avilable set and add in reserved set**. We will also remove it from all the other min \
+heaps as well. **Concurrency can be handled through locks**. 

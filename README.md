@@ -20,8 +20,9 @@ java HelloWorld
 7. [Component Summary](27_summary/02_summary_of_components.md)
 8. [Docker](22_design_notes/23_docker.md)
 9. [Code Review](22_design_notes/24_code_reviews.md)
-10 [API Gateway](22_design_notes/26_api_gateway_exp.md)
-11 [STS Assume](22_design_notes/27_sts_assume.md)
+10. [API Gateway](22_design_notes/26_api_gateway_exp.md)
+11. [STS Assume](22_design_notes/27_sts_assume.md)
+12. [Data Pipeline](28_data_pipeline/01_intro.md) 
 
 ## Design Theory 
 1. [SQL Queries](23_sql/00_summary_queries.md)

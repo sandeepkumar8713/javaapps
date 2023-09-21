@@ -42,7 +42,7 @@
             end) as Jan_Revenue
     from department
     group by id
-    order by id // **pivot the cols**
+    order by id                             // **pivot the cols**
 
 15. select product_id from Sales where '2019-01-01' > sale_date or '2019-03-31' < sale_date // **compare date**
 
@@ -65,3 +65,22 @@
 
 23. select t_1.*, lead(year, 2) over (partition by name order by year) as end_year
     from participation as t_1;                                                  // **get next 2 consecutive years**
+
+24. select id, name, 
+	(case 
+     when 0 <= avg_score.a_score and avg_score.a_score <= 20
+     then 'Hard'
+     when 20 < avg_score.a_score and avg_score.a_score <= 60
+     then 'Medium' 
+     when 60 < avg_score.a_score 
+     then 'Easy'
+     else Null
+     end
+    ) as difficulty
+    from tasks join avg_score on tasks.id = avg_score.task_id
+    order by tasks.id                                                       // **Multiple case statements**
+
+25. delete p1 from new_table p1, trips p2
+    where p1.source = p2.destination and p1.destination = p2.source and 
+    p1.rowno > p2.rowno;                                                   // **delete rows with opposite dirtection**
+

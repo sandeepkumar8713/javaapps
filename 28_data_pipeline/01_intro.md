@@ -6,7 +6,7 @@ Link : https://learning.oreilly.com/library/view/google-bigquery-the/97814920444
    is capable of running SQL queries on **terabytes of data** in a matter of seconds, and petabytes in only minutes.
 2. BigQuery is **serverless**, and you can run queries without the need to **manage infrastructure**. It enables you to carry out 
    analyses that **process aggregations** over the entire dataset **in seconds to minutes**.
-3. You didn’t need to **start up a cluster** or log in to one.
+3. You didn’t need to **start up a cluster** or **log in** to one.
 4. The service scales well even when it does aggregations on terabytes to petabytes of data. This **scalability** is possible because 
    the service distributes the query processing among **thousands of workers almost instantaneously**.
 5. Because BigQuery separates compute and storage, it is possible to run BigQuery SQL queries against **CSV (or JSON or Avro)** files 
@@ -16,7 +16,8 @@ Link : https://learning.oreilly.com/library/view/google-bigquery-the/97814920444
 
 Link : https://www.analytics8.com/blog/dbt-overview-what-is-dbt-and-what-can-it-do-for-my-data-pipeline/#
 
-According to dbt, the tool is a **development framework** that combines modular SQL with software engineering best practices to make **data transformation reliable, fast, and fun**.
+According to dbt, the tool is a **development framework** that combines modular SQL with software engineering best practices to make 
+**data transformation reliable, fast, and fun**.
 
 dbt (data build tool) makes data engineering activities accessible to people with data analyst skills to transform the data in the 
 warehouse using **simple select statements**, effectively creating your entire **transformation process with code**. You can write 
@@ -24,7 +25,8 @@ warehouse using **simple select statements**, effectively creating your entire *
 documentation side-by-side with the code. 
 
 This is more important today than ever due to the shortage of data engineering professionals in the marketplace. Anyone who knows SQL 
-can now build **production-grade data pipelines**, reducing the barrier to entry that previously limited staffing capabilities for legacy technologies.
+can now build **production-grade data pipelines**, reducing the barrier to entry that previously limited staffing capabilities for 
+legacy technologies.
 
 The tool acts as an **orchestration layer on top of your data warehouse** to improve and accelerate your data transformation and 
 integration process. dbt works by **pushing down your code—doing all** the calculations at the database level—making the entire 
@@ -80,3 +82,76 @@ Link : https://medium.com/indiciumtech/17-dbt-commands-you-should-start-using-to
 8. **Environment**: In some cases, the interviewer will ask about cloud computing (GCP, AWS, Azure), Docker, scripting, Terraform, and 
    Kubernetes. You can use these tools to set up cloud or on-premise computer and storage resources. Understanding these technologies 
    and integrating them into portfolio projects is a good practice. 
+
+## SQL
+
+In SQL, a **view is a virtual table based on the result-set** of an SQL statement.
+A view contains **rows and columns, just like a real table.** The fields in a view are fields from one or more real tables
+in the database.
+You can add SQL statements and functions to a view and present the data as if the data were coming **from one single table**.
+
+```sql
+CREATE OR REPLACE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition; 
+```
+
+**Views**: A View is a **virtual relation that acts** as an actual relation. It is not a part of logical relational model of the 
+database system. Tuples of the view are not stored in the database system and **tuples of the view are generated every time** the
+view is accessed. Query expression of the view **is stored in the databases system**. Views can be used everywhere were we can use the 
+actual relation. Views can be used to create **custom virtual relations** according to the needs of a specific user. We can create as 
+**many views as we want** in a databases system. 
+
+**Materialized Views**: When the results of a view expression are **stored in a database system**, they are called materialized
+views. SQL does not provides any standard way of defining materialized view, however some database management system provides 
+**custom extensions to use materialized views**. The process of keeping the materialized views updated is know as view maintenance. Database system uses one of the three ways to keep the materialized view updated:
+
+1. Update the materialized view **as soon as** the relation on which it is defined is updated.
+2. Update the materialized view every time the view is **accessed**.
+3. Update the materialized view **periodically**.
+
+Materialized view is useful when the view is accessed frequently, as it saves the computation time, as the result are stored in the 
+database before hand. Materialized view can also be helpful in case where the **relation on which view is defined is very large** and 
+**the resulting relation of the view is very small**. Materialized view has **storage cost and updation overheads** associated with it. 
+
+```sql
+CREATE MATERIALIZED VIEW view_name
+AS
+query
+WITH [NO] DATA;
+
+REFRESH MATERIALIZED VIEW view_name;
+
+REFRESH MATERIALIZED VIEW CONCURRENTLY view_name;
+```
+
+To load data into a materialized view, you use the REFRESH MATERIALIZED VIEW statement as shown below.
+When you refresh data for a materialized view, PostgreSQL locks the entire table therefore you cannot query data against it. To avoid 
+this, you can use the CONCURRENTLY option.
+With CONCURRENTLY option, PostgreSQL creates a temporary updated version of the materialized view, compares two versions, and performs 
+**INSERT and UPDATE** only the differences.
+You can query against a materialized view while it is being updated. One requirement for using **CONCURRENTLY** option is that the 
+materialized view must have a **UNIQUE** index.
+
+The table and incremental materializations **persist a table**, the view materialization creates a **view**, and the 
+ephemeral materialization, instead of **persisting anything, returns results directly using a common table expression (CTE)**
+
+## SQL JOINS
+
+There is no difference between **LEFT JOIN and LEFT OUTER JOIN, they are exactly same.**
+
+At the top level there are mainly 3 types of joins:
+1. INNER JOIN fetches data if present in **both the tables**.
+
+OUTER JOINs are of 3 types:
+   LEFT OUTER JOIN - fetches data if present in the **left table**.
+   RIGHT OUTER JOIN - fetches data if present in the **right table**.
+   FULL OUTER JOIN - fetches data if present in **either of the two tables**.
+
+CROSS JOIN, as the name suggests, does n times m pairings that join everything to everything. That is similar to where we simply list the tables for joining (in the FROM clause of the SELECT statement), using commas to separate them.
+
+Points to be noted:
+1. If you just mention **JOIN then by default it is an INNER JOIN.**
+2. An **OUTER join has to be LEFT | RIGHT | FULL;** you can not simply say OUTER JOIN.
+3. You can drop the **OUTER keyword and just say LEFT JOIN or RIGHT JOIN or FULL JOIN**.

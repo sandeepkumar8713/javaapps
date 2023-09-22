@@ -84,3 +84,50 @@
     where p1.source = p2.destination and p1.destination = p2.source and 
     p1.rowno > p2.rowno;                                                   // **delete rows with opposite dirtection**
 
+26. select Ranking.DepartmentId, Ranking.salary, e2.Name from (
+        select DepartmentId, salary, rank() over(
+            PARTITION BY DepartmentId order by salary desc
+        ) as salRank from Employee
+        group by DepartmentId, salary
+    ) as Ranking 
+    inner join Employee as e2
+    on  e2.DepartmentId = Ranking.DepartmentId 
+    and e2.Salary = Ranking.salary 
+    where Ranking.salRank <=3
+    order by Ranking.DepartmentId, Ranking.salRank;                       // **Top 3 salaries in each dept**
+
+27. SELECT Request_at AS Day,
+    ROUND(SUM(IF(Status<>"completed", 1, 0))/COUNT(Status),2) AS "Cancellation Rate"
+    FROM Trips
+    GROUP BY Request_at                          // **Cancelation rate(total cancelation / total user on that day)**
+
+28. select avg(num)     // https://www.db-fiddle.com/f/9YLGnWc5ctJGNWJfkT5STH/0
+    from (
+    select 
+        t1.*,
+        sum(freq) over (order by num asc) as cumm_sum,
+        sum(freq) over () as total
+    from t1) t2
+    where total <= 2 * cumm_sum and
+        total >= 2 * (cumm_sum - freq);               // **Find median from freq**
+
+29. SELECT Name
+    FROM Candidate
+    WHERE id = (SELECT CandidateId FROM Vote
+     GROUP BY CandidateId
+     ORDER BY COUNT(1) desc
+     LIMIT 1)                                           // **Find candidate with highest vote**
+
+30. SELECT IFNULL((round(accepts/requests, 2)), 0.0) AS accept_rate
+    FROM                                                            // **count request acceptance ratio**
+        (SELECT count(DISTINCT sender_id, send_to_id) AS requests FROM friend_request) AS t1,
+        (SELECT count(DISTINCT requester_id, accepter_id) AS accepts FROM request_accepted) AS t2 
+
+31. SELECT *                         // https://dbfiddle.uk/mTxWrpVj
+    FROM   crosstab(
+        'SELECT section, status, ct
+        FROM   tbl
+        ORDER  BY 1,2'
+   ) AS ct ("Section" text, "Active" int, "Inactive" int);  // **Pivot status and cnt**
+
+32. https://www.dsfaisal.com/articles/sql/leetcode-sql-problem-solving#1127-user-purchase-platform--hard---leetcode

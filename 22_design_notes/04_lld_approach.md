@@ -29,3 +29,7 @@ parking lot design question the interviewer can suggest that the parking lot has
 system design unless you have clearly discussed this with the interviewer in the requirement collection phase. If you try to \
 solve it as a distributed system design question, then an interviewer can interpret it as you have not sufficient experience \
 to scope a problem and instead of **simplifying**, you are over-complicating the problem. 
+
+## Uncle bob clean architecture
+
+Link : https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html

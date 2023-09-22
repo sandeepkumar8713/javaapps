@@ -28,9 +28,10 @@ Your code will be graded automatically depending on its efficiency with all poss
 16. https://leetcode.com/discuss/interview-question/3472273/Microsoft-OA
 17. https://leetcode.com/discuss/interview-question/3655269/Microsoft-Online-assessment-problem (todo 100 BFS)
 18. https://leetcode.com/discuss/interview-question/3740816/Microsoft-or-OA
+ 
+1. How to build ETL pipeline
 
-
-1. Read pyspark
-2. How to build ETL
-3. How DBT and BigQuery works
-
+1. https://medium.com/@srivastavaanchal000/microsoft-interview-experience-sde-2-july-2022-493fe7b62c39
+2. https://leetcode.com/discuss/interview-question/4066919/Microsoft-Onsite-Question
+3. https://leetcode.com/discuss/interview-question/4066807/Microsoft-Online-Assessment-Test-2023-2024
+4. 

@@ -155,3 +155,22 @@ Points to be noted:
 1. If you just mention **JOIN then by default it is an INNER JOIN.**
 2. An **OUTER join has to be LEFT | RIGHT | FULL;** you can not simply say OUTER JOIN.
 3. You can drop the **OUTER keyword and just say LEFT JOIN or RIGHT JOIN or FULL JOIN**.
+
+## TODO
+1. Practice Advanced SQL.
+2. Learn about data partitioning.
+3. Learn about Teradata architecture and working
+
+
+**RANK** numbers are skipped so there may be a gap in rankings, and may not be unique.
+**DENSE_RANK** numbers are not skipped so there will not be a gap in rankings, and may not be unique.
+**ROW_NUMBER** is generated once for each row so there are no duplicates or gaps.
+
+For example:
+RANK: a list of results could use the RANK function and show values of 1, 2, 2, 4, and 5. The number 3 is skipped because
+      the rank of 2 is tied.
+DENSE_RANK: a list of results could use the DENSE_RANK function and show values of 1, 2, 2, 3, and 4. The number 3 is still used,
+      even if rank of 2 is tied.
+ROW_NUMBER: a list of results could use the ROW_NUMBER function and show values of 1, 2, 3, 4, and 5. All of the numbers are unique.
+
+Link : https://www.dsfaisal.com/articles/sql/leetcode-sql-problem-solving#175-combine-two-tables--easy--leetcode

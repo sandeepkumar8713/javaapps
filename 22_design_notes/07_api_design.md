@@ -146,3 +146,54 @@ Atomcity
 Pagination (it breaks stateless property)
 Fragment the API (break the response into frames 10kb each with numbers)
 If server is loaded, we can reduce the response size. Like sending only the name of users and id, not there details.
+
+**CLUSTERED INDEX VS NON-CLUSTERED INDEX**
+A clustered index is faster.	
+A non-clustered index is slower.
+
+The clustered index requires less memory for operations.	
+A non-Clustered index requires more memory for operations.
+
+In a clustered index, the clustered index is the main data.	
+In the Non-Clustered index, the index is the copy of data.
+
+A table can have only one clustered index.	
+A table can have multiple non-clustered indexes.
+
+The clustered index has the inherent ability to store data on the disk.	
+A non-Clustered index does not have the inherent ability to store data on the disk.
+
+Clustered index store pointers to **block** not data.	
+Non-Clustered index storescontainThe non-Clustered both value and a pointer to the actual row that holds data.
+
+In Clustered index leaf nodes are actual data itself.	
+In Non-Clustered index leaf nodes are not the actual data itself rather they only contain included columns.
+
+In a Clustered index, Clustered key defines the **order of data** within a table.	
+In a Non-Clustered index, the index key defines the **order of data** within the index.
+
+A Clustered index is a type of index in which table records are physically reordered to match the index.	
+A Non-Clustered index is a special type of index in which the logical order of the index does not match the physical
+stored order of the rows on the disk.
+
+The size of The primary clustered index is **large.**
+The size of the non-clustered index is compared relativelyThe composite is **smaller**.
+
+**Primary Keys** of the table by default are clustered indexes.	
+The **composite key** when used with unique constraints of the table act as the non-clustered index.
+
+The **Model-View-Controller** (MVC) is an **architectural pattern** that separates an application into three main logical components: 
+the model, the view, and the controller. Each of these components are built to handle specific development aspects of an application. 
+
+**Model** : The Model component corresponds to all the data-related logic that the user works with. This can represent either the data 
+that is being transferred between the View and Controller components or any other business logic-related data. For example, a Customer 
+object will retrieve the customer information from the database, manipulate it and update it data back to the database or use it to 
+render data.
+
+The **View** component is used for all the UI logic of the application. For example, the Customer view will include all the UI 
+components such as text boxes, dropdowns, etc. that the final user interacts with.
+
+**Controllers** act as an interface between Model and View components to process all the business logic and incoming requests, 
+manipulate data using the Model component and interact with the Views to render the final output. For example, the Customer controller 
+will handle all the interactions and inputs from the Customer View and update the database using the Customer Model. The same controller 
+will be used to view the Customer data.

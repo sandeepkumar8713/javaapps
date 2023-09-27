@@ -8,7 +8,6 @@ Your code will be graded automatically depending on its efficiency with all poss
 2. 60% and below= Automatic Reject
 3. 60%-100% = Code goes through a review by a MS reviewer. 
 
-
 **Coding Questions**
 1. https://leetcode.com/discuss/interview-question/398023/Microsoft-Online-Assessment-Questions 
 2. https://leetcode.com/discuss/interview-question/3936802/MICROSOFT-OA (line segment ignored)
@@ -29,9 +28,28 @@ Your code will be graded automatically depending on its efficiency with all poss
 17. https://leetcode.com/discuss/interview-question/3655269/Microsoft-Online-assessment-problem (todo 100 BFS)
 18. https://leetcode.com/discuss/interview-question/3740816/Microsoft-or-OA
  
-1. How to build ETL pipeline
-
 1. https://medium.com/@srivastavaanchal000/microsoft-interview-experience-sde-2-july-2022-493fe7b62c39
 2. https://leetcode.com/discuss/interview-question/4066919/Microsoft-Onsite-Question
 3. https://leetcode.com/discuss/interview-question/4066807/Microsoft-Online-Assessment-Test-2023-2024
-4. 
+4. https://www.geeksforgeeks.org/microsoft-interview-experience-senior-software-engineer-4-years-experienced/
+5. https://www.geeksforgeeks.org/microsoft-interview-experience-for-software-engineer-2-3-years-experienced/
+6. https://www.geeksforgeeks.org/microsoft-interview-experience-for-sde-2-4/
+7. https://www.geeksforgeeks.org/microsoft-interview-experience-for-sde-2/
+8. https://www.geeksforgeeks.org/microsoft-interview-experience-pool-campus/
+9. https://www.geeksforgeeks.org/microsoft-interview-experience-for-sde/
+10. https://www.geeksforgeeks.org/microsoft-interview-experience-3
+11. https://www.geeksforgeeks.org/microsoft-interview-experience-for-ml-engineer-2020
+12. https://www.geeksforgeeks.org/microsoft-interview-experience-for-software-engineer
+
+## TODO
+1. How to build ETL pipeline (**TODO**)
+2. Add cloud design patterns (**TODO**)
+3. External Sorting (**ADDED**)
+4. Go through remaining questions (**TODO**)
+5. Explain concurrent hash map in java. Explain how locking is done in concurrent hashmap
+6. Explain the working of garbage collector in java
+7. 2 files big given, make a new file having limited ram by merging columns.(https://www.careercup.com/question?id=6266749062742016)
+   async worker, queue
+
+# Find similar question
+21_firstFolder/32_full_binary_tree.py

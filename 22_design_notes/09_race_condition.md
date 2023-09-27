@@ -134,3 +134,46 @@ INSERT INTO Booking (room_id, start_date, end_date) VALUES (123, '2022-01-03', '
     ```
     UPDATE Room SET available = FALSE WHERE id = 123 AND available = TRUE;
     ```
+
+## Locks in DB
+
+Link : https://www.geeksforgeeks.org/types-of-locks-in-concurrency-control/
+
+A Lock is a variable assigned to any data item in order to keep track of the status of that data item so that 
+**isolation and non-interference** is ensured during concurrent transactions.
+
+**Binary Locks** :
+Remember that a lock is fundamentally a variable which holds a value. A binary lock is a variable capable of holding only 2 possible values, i.e., a **1 (depicting a locked state) or a 0 (depicting an unlocked state)**. This lock is usually associated with every data item in the database ( maybe at table level, row level or even the entire database level). 
+
+**Shared or Exclusive Locks** :
+The incentive governing these types of locks is the restrictive nature of binary locks. Here we look at locks which permit other 
+transactions to make read queries since a READ query is non-conflicting. However, if a transaction demands a write query on item X, then 
+that transaction must be given exclusive access to item X. Ergo, we require a kind of multi-mode lock which is what shared/exclusive 
+locks are. They are also known as Read/Write locks.
+
+Unlike binary locks, Read/Write locks may be set to 3 values, i.e., SHARED, EXCLUSIVE or UNLOCKED. Hence, our lock, i.e., lock(X), may 
+reflect either of the following values:
+1. **READ-LOCKED** : If a transaction only requires to read the contents of item X and the lock only permits reading. This is 
+   also known as a shared lock.
+2. **WRITE-LOCKED** : If a transaction needs to update or write to item X, the lock must restrict all other transactions and 
+   provide exclusive access to the current transaction. Thus, these locks are also known as exclusive locks.
+3. **UNLOCKED** : Once a transaction has completed its read or update operations, no lock is held and the data item is unlocked.
+   In this state, the item may be accessed by any queued transactions.
+
+**Certify Locks** : 
+The motivation behind introducing certify locks is the failure of previously mentioned locks to deliver an efficient and promising 
+architecture which does not compromise on speed of processing transactions. Here we briefly look at a form of multiple-mode locking 
+scheme which allows for the lock to be characterized by **3 locked states and 1 unlocked state**. 
+
+The states an item may be issued are :
+1. **READ-LOCKED** : same as the read-locked state explained earlier for Shared/Exclusive Locks
+2. **WRITE-LOCKED** : same as the write-locked state explained earlier for Shared/Exclusive Locks
+3. **CERTIFY-LOCKED** : (**update lock**)
+    This is an exclusive lock. This is used when **2 different transactions must be read and write respectively**, to item X. 
+    In order for this to happen, **a committed and a local version of the data item is created**. The committed version is used
+    by all transactions which have a read-lock issued to X. The local version of X is accessed by T only when a write-lock has
+    been acquired by T. Once the writing or updating operation has been carried out by T on item X, T must obtain a certify-lock
+    so that the committed version of data item X may be updated to the local version’s contents and the local version may be
+    discarded.
+4. **UNLOCKED** : same as the write-locked state explained earlier for Shared/Exclusive Locks
+

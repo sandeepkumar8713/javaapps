@@ -111,12 +111,7 @@
     where total <= 2 * cumm_sum and
         total >= 2 * (cumm_sum - freq);               // **Find median from freq**
 
-29. SELECT Name
-    FROM Candidate
-    WHERE id = (SELECT CandidateId FROM Vote
-     GROUP BY CandidateId
-     ORDER BY COUNT(1) desc
-     LIMIT 1)                                           // **Find candidate with highest vote**
+
 
 30. SELECT IFNULL((round(accepts/requests, 2)), 0.0) AS accept_rate
     FROM                                                            // **count request acceptance ratio**
@@ -130,4 +125,18 @@
         ORDER  BY 1,2'
    ) AS ct ("Section" text, "Active" int, "Inactive" int);  // **Pivot status and cnt**
 
-32. https://www.dsfaisal.com/articles/sql/leetcode-sql-problem-solving#1127-user-purchase-platform--hard---leetcode
+32. select row_number() OVER () as rownum, name, year 
+    from participation order by name;                      // **select row number in psql**
+
+33. COALESCE(bb.total_amount, 0) total_amount             // **Return first not null number**
+
+34. WHERE extract('year' FROM order_date) = 2019          // **Match only date**
+
+35. https://www.db-fiddle.com/f/uxV69xBAXhhfJXQ99QSrd5/0
+    select product_id, max(change_date) as max_data
+    from Products
+    where change_date <= '2019-08-16' 
+    group by product_id                                  // **Aggregate function on date column**
+
+36. https://www.dsfaisal.com/articles/sql/leetcode-sql-problem-solving#1445-apples--oranges--medium---leetcode
+

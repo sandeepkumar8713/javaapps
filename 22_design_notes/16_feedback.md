@@ -35,6 +35,10 @@
 11. Which **no-sql** to choose based on data?
 12. **Vertcial vs horizontal** DB scaling
 13. **Advanced python and sql**
+14. **MVC**
+15. **Cluster and non clustered indexes**
+16. **Fuzzy problem**
+17. **Immunatbale class**
 
 ## Language Specific
 1. Add a good **spring** and **spring boot** rest example with **DB, S3 and external api call**.

@@ -30,6 +30,7 @@ A cache client is a **piece of code residing** in hosting servers that do **(has
 data in the cache servers.
 1. Each cache client will know about **all the cache servers**.
 2. All clients can use well-known transport **protocols like TCP or UDP** to talk to the cache servers.
+3. Also, the **resolution technique** to move data to and from the cache servers should be the **same**.
 
 **FRs**
 Insert data, Retrieve data
@@ -37,7 +38,18 @@ Insert data, Retrieve data
 **API design**
 insert(key, value), retrieve(key), delete(key)
 
+**Design considerations**
+Storage hardware, Data structures, Cache client, Writing policy, Eviction policy
+
+**Replica of shards**
+We can start by adding one primary and two backup nodes in a cache shard. With replicas, there’s always a possibility of **inconsistency**. If our replicas are in close proximity, writing over replicas is performed 
+**synchronously to avoid inconsistencies** between shard replicas.
+
 ![](images2/01_cache_detailed_hld.png)
+
+We used **consistent hashing**. Finding a key under this algorithm requires a time complexity of O(log(N)), 
+where N represents the number of cache shards.
+**hash tables**, **LRU eviction**, **TCP and UDP** , **replicas**, **RAM**
 
 **configuration service** that continuously **monitors** the health of the cache servers. In addition to that, the cache clients 
 will get **notified when a new cache server** is added to the cluster. When we use this strategy, **no human intervention** or 
@@ -46,6 +58,27 @@ cache servers from the configuration service.
 
 **Distinctive Points**
 hotkey problem(replicas), Storage hardware(specialized or commodity hardware, secondary storage)
+
+**strong consistency comes from synchronous writing**
+
+## Memchached
+1. Both the key and the value are **strings**. This means that any data that has been stored will have to be **serialized**.
+2. In this architecture, **servers are unaware of each other**, and there’s **no synchronization**, data sharing, and communication.
+   between the servers.
+3. Therefore, Memcached offers a **high throughput and low latency**.
+
+## Redis
+1. Redis **understands the different data structures**
+2. Store blob on **secondary storage**
+3. Act as **Message broker**, **Asynchronous communication**.
+4. **built-in replication mechanism, automatic failover** (tiered architecture)
+5. It decouples data and controls the plane. This results in increased **reliability and performance**.
+6. A **Redis cluster** **Redis Sentinel** has one or more Redis databases that are queried using multithreaded proxies. Redis 
+   clusters perform **automatic sharding** where each shard has **primary and secondary nodes**. Each Redis cluster is 
+   maintained by a **cluster manager** whose job is to **detect failures** and perform automatic failovers
+7. Redis uses **pipelining** to speed up the process. Pipelining is the process of combining **multiple requests** from the 
+   client side **without waiting for a response** from the server. As a result, it reduces the number of RTT spans for
+   multiple requests.
 
 ## 2. Distributed Queue
 
@@ -172,5 +205,80 @@ We utilized a number of nodes, each of which performs **search queries in parall
 
 ## 5. CDN
 
+**Advantages**
+High latency, Data-intensive applications, Scarcity of data center resources
+
+**FR**
+Retrieve, Request, Deliver, Search, Update, Delete
+
+**NFR**
+Performance, Availability, Scalability, Reliability, security
+
+**Components**
+Clients, Routing system, Scrubber servers, Proxy servers, Distribution system, Origin servers, Management system
+
 ![](images2/05_cdn_hld.png)
 
+**API Design**
+Retrieve, Deliver, Request, Search, Update
+
+As stated, the **push CDN** is mostly used for serving static content. Since static content is served to a wide range of users 
+for longer than dynamic content, the **push CDN scheme maintains more replicas** than the pull CDN, thus improving 
+availability. On the other hand, the **pull CDN is favored for frequently changing** content and a high traffic load. Low 
+storage consumption is one of the main benefits of the pull.
+
+We can generate dynamic content based on **user location, time of day at a location**, third-party APIs specific to a
+location (for instance, **weather API**), and so on. So, it’s optimal to run the scripts at proxy servers instead of the
+origin servers.
+
+Another popular approach for dynamic data compression is **Edge Side Includes** (ESI) markup language. Usually, a small 
+portion of the web pages changes in a certain time. It means fetching a full web page on each small change contains a lot of 
+redundant data. To resolve this performance penalty, **ESI specifies where content was changed** so that the rest of the web 
+page content can be cached. It **assembles dynamic content** at the CDN edge server or client browser.
+
+**Dynamic Adaptive Streaming one HTTP** (DASH) uses a manifest file with URIs of the video with different resolutions 
+so that the client can fetch whatever is appropriate as per prevailing network and end node conditions.
+
+**Tree**
+This set of servers receives data from the parent nodes in the tree, which eventually receive data from the origin servers.
+**The data is copied from the origin server to the proxy servers** by following different **paths in the tree**.
+
+The **tree structure** for data distribution allows us to scale our system for increasing users by adding more server nodes to 
+the tree. It also reduces the **burden** on the origin server for data distribution. A CDN typically has one or two **tiers** of 
+proxy servers (caches).
+
+Each PoP contains a collection of CDN proxy servers. When any child proxy server stops working due to any failures, DNS can 
+route clients to a **different child-level proxy server**. Each child proxy server knows many upper-layer parent servers, 
+and if one fails, it can go to the other one. The origin server is a set of servers with a **hot backup(s)**, and 
+content is in replicated store. If any of the origin servers fail, other servers take the load.
+
+There are two important factors that are relevant to finding the nearest proxy server to the user:
+1. **Network distance** 
+2. **Requests load** 
+
+There are two steps in the DNS redirection approach:
+1. In the first step, it maps the clients to the appropriate **network location**.
+2. In the second step, it **distributes the load over** the proxy servers in that location to balance the load among
+   the proxy servers.
+
+**Request redirection**
+Anycast(same IP), Client multiplexing, HTTP redirection
+
+**Consistency**
+Periodic polling, Time-to-live, Leases(origin infroms after sometime)
+
+**Deployment**
+1. What are the best **locations** to install proxy servers to maximally utilize CDN technology?
+2. How many **CDN proxy** servers should we install?
+
+**Placement of CDN proxy servers**
+The CDN proxy servers must be placed at network locations with good connectivity. See the options below:
+1. **On-premises** represents a smaller data center that could be placed near **major IXPs**.
+2. **Off-premises** represents placing CDN proxy servers in **ISP’s networks**.
+
+Google uses **split TCP** to reduce user-perceived delays by keeping persistent connections with huge TCP 
+windows from the **IXP-level infrastructure to their primary data centers**. The **client’s TCP requests terminate** at the 
+IXP-level infrastructure and are then **forwarded on already established**, low latency TCP connections.
+
+**CDN as a service**
+Akamai, Cloudflare

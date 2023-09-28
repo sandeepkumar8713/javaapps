@@ -10,8 +10,8 @@
    3 Class Diagrams (Elevator, Car Rental, Cricinfo)
    [SQL Query](23_sql/00_summary_queries.md)
 
-4. **HLD Gloden rules**
-   LLD Approach
+4. [HLD Gloden rules](22_design_notes/03_hld_golden_rules.md)
+   [LLD Approach](22_design_notes/04_lld_approach.md)
    SOLID Scalar notes
 
 5. REST, **Microservice vs Monolith, SQL vs NoSQL**, ACID vs CAP
@@ -40,9 +40,9 @@
    **Spring Boot Application**
    **Java Programs** (notes)
    
-10. **Python Theory**
-   (GIL, Memory management, inheritance, decorators, async io, generics)
-   (miscellaneous : Data idempotency, parquet file, **Docker, k8s** pytest)
-   **Python Programs** (notes, approach)
+10. [Python Theory](../pythonapps/theory/01_GIL.md)
+    (GIL, Memory management, inheritance, decorators, async io, generics)
+    (miscellaneous : Data idempotency, parquet file, **Docker, k8s** pytest)
+    **Python Programs** (notes, approach)
 
 11. **Feedback**

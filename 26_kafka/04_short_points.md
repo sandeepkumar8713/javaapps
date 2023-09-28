@@ -16,8 +16,8 @@
 13. Broker keeps track of **last offset** of each partition.
 
 ## Why Kafka
-1. RabbitMQ’s architecture is designed for **complex message routing**. It uses the **push model**. Producers send messages to consumers 
-   with  different rules. 
+1. RabbitMQ’s architecture is designed for **complex message routing**. It uses the **push model**. Producers send messages 
+   to consumers with  different rules. 
    Kafka uses partition-based design for **real-time, high-throughput** stream processing. It uses the **pull model**. Producers publish messages to topics and partitions that consumers subscribe to.
 
 2. RabbitMQ brokers monitor message consumption. It **deletes messages** after they’re consumed. It supports message priorities. 

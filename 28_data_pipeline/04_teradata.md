@@ -4,45 +4,39 @@ Link : https://www.tutorialspoint.com/teradata/teradata_introduction.htm
 
 Following are some of the **features** of Teradata:
 
-    Unlimited Parallelism − Teradata database system is based on Massively Parallel Processing (MPP) Architecture. MPP architecture divides the workload evenly across the entire system. Teradata system splits the task among its processes and runs them in parallel to ensure that the task is completed quickly.
+**Unlimited Parallelism** − Teradata database system is based on Massively Parallel Processing (MPP) Architecture. MPP architecture divides the workload evenly across the entire system. Teradata system splits the task among its processes and runs them in parallel to ensure that the task is completed quickly.
 
-    Shared Nothing Architecture − Teradata’s architecture is called as Shared Nothing Architecture. Teradata Nodes, its Access Module Processors (AMPs) and the disks associated with AMPs work independently. They are not shared with others.
+**Shared Nothing Architecture** − Teradata’s architecture is called as Shared Nothing Architecture. Teradata Nodes, its Access Module Processors (AMPs) and the disks associated with AMPs work independently. They are not shared with others.
 
-    Linear Scalability − Teradata systems are highly scalable. They can scale up to 2048 Nodes. For example, you can double the capacity of the system by doubling the number of AMPs.
+Linear Scalability − Teradata systems are highly scalable. They can scale up to 2048 Nodes. For example, you can double the capacity of the system by doubling the number of AMPs.
 
-    Connectivity − Teradata can connect to Channel-attached systems such as Mainframe or Network-attached systems.
+Connectivity − Teradata can connect to Channel-attached systems such as Mainframe or Network-attached systems.
 
-    Mature Optimizer − Teradata optimizer is one of the matured optimizer in the market. It has been designed to be parallel since its beginning. It has been refined for each release.
+**Mature Optimizer** − Teradata optimizer is one of the matured optimizer in the market. It has been designed to be parallel since its beginning. It has been refined for each release.
 
-    SQL − Teradata supports industry standard SQL to interact with the data stored in tables. In addition to this, it provides its own extension.
+SQL − Teradata supports industry standard SQL to interact with the data stored in tables. In addition to this, it provides its own extension.
 
-    Robust Utilities − Teradata provides robust utilities to import/export data from/to Teradata system such as FastLoad, MultiLoad, FastExport and TPT.
+Robust Utilities − Teradata provides robust utilities to import/export data from/to Teradata system such as FastLoad, MultiLoad, FastExport and TPT.
 
-    Automatic Distribution − Teradata automatically distributes the data evenly to the disks without any manual intervention.
+**Automatic Distribution** − Teradata automatically distributes the data evenly to the disks without any manual intervention.
 
 
 The key components of Teradata are as follows:
 
-    Node − It is the basic unit in Teradata System. Each individual server in a Teradata system is referred as a Node. A node consists of its own operating system, CPU, memory, own copy of Teradata RDBMS software and disk space. A cabinet consists of one or more Nodes.
+**Node** − It is the basic unit in Teradata System. Each individual server in a Teradata system is referred as a Node. A node consists of its own operating system, CPU, memory, own copy of Teradata RDBMS software and disk space. A cabinet consists of one or more Nodes.
 
-    Parsing Engine − Parsing Engine is responsible for receiving queries from the client and preparing an efficient execution plan. The responsibilities of parsing engine are −
+**Parsing Engine** − Parsing Engine is responsible for receiving queries from the client and preparing an efficient execution plan. The responsibilities of parsing engine are −
 
-        Receive the SQL query from the client
+    Receive the SQL query from the client
+    Parse the SQL query check for syntax errors
+    Check if the user has required privilege against the objects used in the SQL query
+    Check if the objects used in the SQL actually exists
+    Prepare the execution plan to execute the SQL query and pass it to BYNET
+    Receives the results from the AMPs and send to the client
 
-        Parse the SQL query check for syntax errors
+**Message Passing Layer** − Message Passing Layer called as BYNET, is the networking layer in Teradata system. It allows the communication between PE and AMP and also between the nodes. It receives the execution plan from Parsing Engine and sends to AMP. Similarly, it receives the results from the AMPs and sends to Parsing Engine.
 
-        Check if the user has required privilege against the objects used in the SQL query
-
-        Check if the objects used in the SQL actually exists
-
-        Prepare the execution plan to execute the SQL query and pass it to BYNET
-
-        Receives the results from the AMPs and send to the client
-
-    Message Passing Layer − Message Passing Layer called as BYNET, is the networking layer in Teradata system. It allows the communication between PE and AMP and also between the nodes. It receives the execution plan from Parsing Engine and sends to AMP. Similarly, it receives the results from the AMPs and sends to Parsing Engine.
-
-    Access Module Processor (AMP) − AMPs, called as Virtual Processors (vprocs) are the one that actually stores and retrieves the data. AMPs receive the data and execution plan from Parsing Engine, performs any data type conversion, aggregation, filter, sorting and stores the data in the disks associated with them. Records from the tables are evenly distributed among the AMPs in the system. Each AMP is associated with a set of disks on which data is stored. Only that AMP can read/write data from the disks.
-
+**Access Module Processor (AMP)** − AMPs, called as Virtual Processors (vprocs) are the one that actually stores and retrieves the data. AMPs receive the data and execution plan from Parsing Engine, performs any data type conversion, aggregation, filter, sorting and stores the data in the disks associated with them. Records from the tables are evenly distributed among the AMPs in the system. Each AMP is associated with a set of disks on which data is stored. Only that AMP can read/write data from the disks.
 
 Storage Architecture
 
@@ -115,7 +109,7 @@ the user instead of AMPs.
 1. The client submits a query.
 2. The parser receives the query and passes the PI value of the record to the hashing algorithm.
 3. The hashing algorithm hashes the primary index value and returns a 32 bit number, called Row Hash.
-4. The higher order bits of the row hash (first 16 bits) is used to identify the hash map entry. The hash map contains one AMP #. Hash map is an array of buckets which contains specific AMP #.
+4. The higher order bits of the row hash (**first 16 bits**) is used to identify the hash map entry. The hash map contains one AMP #. Hash map is an array of buckets which contains specific AMP #.
 5. BYNET sends the data to the identified AMP.
 6. AMP uses the 32 bit Row hash to locate the row within its disk.
 7. If there is any record with same row hash, then it increments the uniqueness ID which is a 32 bit number. For new row hash, uniqueness ID is assigned as 1 and incremented whenever a record with same row hash is inserted.

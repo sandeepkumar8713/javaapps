@@ -26,16 +26,16 @@ To build an ETL pipeline with **batch processing**, you need to:
    overwriting, including a timestamp to indicate it is new. You must do this carefully to prevent the data warehouse from “exploding” 
    due to disk space and performance limitations.
 
-To build a stream processing **ETL pipeline** with Kafka, you need to:
+To build a stream processing **ETL pipeline** with **Kafka**, you need to:
 1. **Extract data into Kafka**: the Confluent JDBC connector pulls each row of the source table and writes it as a key/value pair into a 
    Kafka topic (a feed where records are stored and published). Applications interested in the state of this table read from this topic. 
    As client applications add rows to the source table, Kafka automatically writes them as new messages to the Kafka topic, enabling a 
    real-time data stream. Note you can implement a database connection yourself without Confluent’s commercial product.
-2. **Pull data from Kafka topics**: the ETL application extracts messages from the Kafka topic as Avro records, creates an Avro schema 
+2. **Pull data from Kafka topics**: the ETL application extracts messages from the Kafka topic as **Avro records**, creates an Avro schema 
    file, and deserializes them. Then it creates KStream objects from the messages.
 3. **Transform data in KStream objects**: with the Kafka Streams API, the stream processor receives one record at a time, processes it, 
    and produces one or more output records for downstream processors. These processors can transform messages one at a time, filter them 
-   based on conditions, and perform data operations on multiple messages such as aggregation.
+   based on conditions, and perform data operations on multiple messages such as **aggregation**.
 4. **Load data to other systems**: the ETL application still holds the enriched data, and now needs to stream it into target systems, 
     such as a data warehouse or data lake. In Confluent’s example, they propose using their S3 Sink Connector to stream the data to 
     Amazon S3. You can also integrate with other systems such as a Redshift data warehouse using Amazon Kinesis.
@@ -53,7 +53,7 @@ To build a data pipeline without ETL in **Panoply**, you need to:
 1. **Select data sources and import data**: select data sources from a list, enter your credentials and define destination tables. 
    Click “Collect,” and Panoply automatically pulls the data for you. Panoply automatically takes care of schemas, 
    data preparation, data cleaning, and more.
-2. **Run transformation queries**: select a table and run an SQL query against the raw data. You can save the query as a 
+2. **Run transformation queries**: **select a table and run an SQL query** against the raw data. You can save the query as a 
    transformation, or export the resulting table as a CSV. You can run several transformations until you achieve the data format 
    you need. You shouldn’t be concerned about “ruining” the data - Panoply lets you perform any transformation, but keeps your 
    raw data intact.

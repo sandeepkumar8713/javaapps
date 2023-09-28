@@ -2,7 +2,7 @@
 
 Link : https://learning.oreilly.com/library/view/google-bigquery-the/9781492044451/ch01.html#managed_storage
 
-1. Google BigQuery is a serverless, highly scalable **data warehouse** that comes with a **built-in query engine**. The query engine 
+1. Google BigQuery is a serverless, **highly scalable data warehouse** that comes with a **built-in query engine**. The query engine 
    is capable of running SQL queries on **terabytes of data** in a matter of seconds, and petabytes in only minutes.
 2. BigQuery is **serverless**, and you can run queries without the need to **manage infrastructure**. It enables you to carry out 
    analyses that **process aggregations** over the entire dataset **in seconds to minutes**.
@@ -32,7 +32,7 @@ The tool acts as an **orchestration layer on top of your data warehouse** to imp
 integration process. dbt works by **pushing down your code—doing all** the calculations at the database level—making the entire 
 transformation process **faster, more secure, and easier to maintain.**
 
-1. Quickly and easily provide **clean, transformed data** ready for analysis.
+1. Quickly and easily provide **clean, transformed data ready for analysis**.
 2. Apply software engineering practices—such as **modular code, version control**, testing, and continuous integration/continuous 
    deployment (CI/CD)—to analytics code.
 3. Build reusable and modular code using **Jinja**.
@@ -99,9 +99,9 @@ WHERE condition;
 
 **Views**: A View is a **virtual relation that acts** as an actual relation. It is not a part of logical relational model of the 
 database system. Tuples of the view are not stored in the database system and **tuples of the view are generated every time** the
-view is accessed. Query expression of the view **is stored in the databases system**. Views can be used everywhere were we can use the 
-actual relation. Views can be used to create **custom virtual relations** according to the needs of a specific user. We can create as 
-**many views as we want** in a databases system. 
+view is accessed. Query expression of the view **is stored in the databases system**. Views can be used everywhere were we can
+use the actual relation. Views can be used to create **custom virtual relations** according to the needs of a specific user. 
+We can create as **many views as we want** in a databases system. 
 
 **Materialized Views**: When the results of a view expression are **stored in a database system**, they are called materialized
 views. SQL does not provides any standard way of defining materialized view, however some database management system provides 
@@ -158,9 +158,6 @@ Points to be noted:
 
 ## TODO
 1. Practice Advanced SQL.
-2. Learn about data partitioning.
-3. Learn about Teradata architecture and working
-
 
 **RANK** numbers are skipped so there may be a gap in rankings, and may not be unique.
 **DENSE_RANK** numbers are not skipped so there will not be a gap in rankings, and may not be unique.

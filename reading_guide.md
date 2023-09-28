@@ -27,10 +27,12 @@
    **Redis**
 
 7. **Read** High level questions from System design
-   [Summary_1](27_summary/01_summary_of_HLD.md)
-   [Summary_2](27_summary/02_summary_of_components.md)
+   [Summary_1](27_summary/01_summary_of_HLD.md) (6 points)
+   [Summary_2](27_summary/02_summary_of_components.md) (5 points)
 
 8. [Data Pipeline](28_data_pipeline/01_intro.md)
+      (Big query, DBT, SQL, Spark, ETL, Teradata)
+   [Spark Tutorial](../pythonapps/spark_tutorial/01_file.py)
 
 9. [Java Theory](20_java_theory/01_intro.md)
    (Intro: SpringBoot Annotation, Hash Set, Java Bean, Serilization, 

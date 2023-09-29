@@ -158,6 +158,7 @@ return only one value whereas the OLAP function will provide the individual rows
 Following is an example to find the cumulative sum or running total of NetPay on Salary table. Records are sorted by EmployeeNo and 
 **cumulative sum** is calculated on NetPay column.
 
+```sql
 SELECT EmployeeNo, NetPay, 
 SUM(Netpay) OVER(ORDER BY EmployeeNo ROWS UNBOUNDED PRECEDING) as TotalSalary 
 FROM Salary;
@@ -170,6 +171,7 @@ SPOOL = 1000000 BYTES;
 
 GRANT SELECT,INSERT,UPDATE ON Employee TO TD01;
 REVOKE INSERT,SELECT ON Employee FROM TD01;
+```
 
 FastLoad utility is used to load data into empty tables. Since it does not use transient journals, data can be loaded quickly. It 
 doesn't load duplicate rows even if the target table is a MULTISET table.

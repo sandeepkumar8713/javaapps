@@ -282,3 +282,58 @@ IXP-level infrastructure and are then **forwarded on already established**, low 
 
 **CDN as a service**
 Akamai, Cloudflare
+
+6. ## Database
+
+**SQL**
+ACID, Reduced redundancy, Concurrency, Integration, Backup and disaster recovery
+Impedance mismatch (DS mismatch in Hard disk and memory)
+
+**NOSQL**
+Simple design, Horizontal scaling, Availability, Support for unstructured and semi-structured data, Cost
+Lack of standardization, Consistency
+
+**Replication**
+1. Synchronous replication
+2. Asynchronous replication
+
+1. **Single leader or primary-secondary replication**
+   1. Statement-based replication
+   2. Write-ahead log (WAL) shipping
+   3. Logical (row-based) log replication
+2. **Multi-leader replication**
+   1. Conflict avoidance **given record go via the same leader**
+   2. Last-write-wins
+   3. Custom logic
+3. **Peer-to-peer or leaderless replication**
+   **Quorums**
+    **w+r > n**
+
+1. **Vertical sharding** (columns seperated)
+2. **Horizontal sharding** (rows seperated)
+   1. Key-range based sharding
+      1. precisely know where
+      2. Range queries can be performed
+
+      1. Range queries only on primary key
+      2. uneven distribution
+   2. Hash based sharding
+      1. uniformly distributed
+      2. can’t perform range queries
+
+3. **Consistent hashing**
+   1. easy to scale
+   2. increases the throughput and improves the latency
+
+   1. Randomly assigning nodes
+
+**Rebalance the partitions**
+1. Avoid hash mod n
+2. Fixed number of partitions
+3. Dynamic partitioning
+4. Partition proportionally to nodes
+
+1. Partition secondary indexes by document
+   1. covering just the documents in that partition
+2. Partition secondary indexes by the term
+   1. global index for secondary terms

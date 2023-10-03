@@ -4,7 +4,7 @@
 2. But **order of msg** is lost due to partition.
 3. **Partition is replicated** in multiple brokers for recovery.
 4. **Scale linearly**.
-5. Support **batching** of messages 
+5. Support **batching** of messages and **streaming**
 6. different consumer **different speed**
 7. **Simple msg format**, each partition is represented by **segement files** saved in Hard disk
 8. **push and pull message** both supported
@@ -28,4 +28,21 @@
 
 4. RabbitMQ supports a broad range of languages and **legacy protocols**.
    Kafka has **limited choices of programming languages**. It uses binary protocol over **TCP** for data transmission
+
+## Kafka Summary
+
+In **summary**, if you get asked if Kafka can replace a database, then here are different answers:
+
+1. Kafka can store data forever in a durable and high available manner providing **ACID guarantees**.
+2. Different options to **query historical data** are available in Kafka.
+3. Kafka-native add-ons like **ksqlDB** or **Tiered Storage** make Kafka more **powerful** than ever before for data      
+   processing and event-based long-term storage
+4. **Stateful applications** can be built leveraging Kafka clients (microservices, business applications) without the   
+   need for another external database
+5. **Not a replacement** for existing databases like MySQL, MongoDB, Elasticsearch or Hadoop. \
+   **Other databases and Kafka complement each other**; the right solution has to be selected for a problem; \
+   often purpose-built materialized views are created and updated in real time from the central event-base \
+   infrastructure
+6. Different options are available for **bi-directional pull and push based integration between Kafka and databases** \
+   to complement each other
 

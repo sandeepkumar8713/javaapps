@@ -36,6 +36,10 @@
 12. **Vertcial vs horizontal** DB scaling
 13. **Advanced python and sql**
 14. **Fuzzy problem** (https://www.geeksforgeeks.org/fuzzy-logic-introduction/)
+15. **Add all class design code**
+16. **UDP vs TCP**, n/w layers
+17. Explain how to achievce perfomance in HLD
+18. plagiarized how to detect in text.
 
 ## Language Specific
 1. Add a good **spring** and **spring boot** rest example with **DB, S3 and external api call**.

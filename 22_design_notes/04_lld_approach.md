@@ -30,6 +30,26 @@ system design unless you have clearly discussed this with the interviewer in the
 solve it as a distributed system design question, then an interviewer can interpret it as you have not sufficient experience \
 to scope a problem and instead of **simplifying**, you are over-complicating the problem. 
 
+## Relationships in Class
+
+Link : https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-aggregation-vs-composition/
+
+**UML**
+1. Association : arrow, **People have address**
+2. Aggregation : white diamond, **Department have people**
+3. Composition : black diamond , **Car have Engine**
+
+**Association**
+If two classes in a model need to **communicate** with each other, there must be a link between them, and that can be represented 
+by an association (connector).
+
+**Aggregation and Composition are subsets of association** meaning they are specific cases of association. In both aggregation and composition object of one class "owns" object of another class. But there is a subtle difference:
+
+**Aggregation** implies a relationship where the child **can exist independently** of the parent. Example: **Class and Student**. 
+Delete the Class and the Students still exist.
+**Composition** implies a relationship where the child **cannot exist independent** of the parent. Example: House and Room. 
+Rooms don't exist separate to a House.
+
 ## Uncle bob clean architecture
 
 Link : https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html

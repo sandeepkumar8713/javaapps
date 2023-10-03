@@ -38,11 +38,13 @@ The key components of Teradata are as follows:
 
 **Access Module Processor (AMP)** − AMPs, called as Virtual Processors (vprocs) are the one that actually stores and retrieves the data. AMPs receive the data and execution plan from Parsing Engine, performs any data type conversion, aggregation, filter, sorting and stores the data in the disks associated with them. Records from the tables are evenly distributed among the AMPs in the system. Each AMP is associated with a set of disks on which data is stored. Only that AMP can read/write data from the disks.
 
-Storage Architecture
+![](images/03_teradata_arch.png)
+
+**Storage Architecture**
 
 When the client runs queries to insert records, Parsing engine sends the records to BYNET. BYNET retrieves the records and sends the row to the target AMP. AMP stores these records on its disks. Following diagram shows the storage architecture of Teradata.
 
-Retrieval Architecture
+**Retrieval Architecture**
 
 When the client runs queries to retrieve records, the Parsing engine sends a request to BYNET. BYNET sends the retrieval request to appropriate AMPs. Then AMPs search their disks in parallel and identify the required records and sends to BYNET. BYNET then sends the records to Parsing Engine which in turn will send to the client. Following is the retrieval architecture of Teradata.
 
@@ -113,9 +115,9 @@ the user instead of AMPs.
 5. BYNET sends the data to the identified AMP.
 6. AMP uses the 32 bit Row hash to locate the row within its disk.
 7. If there is any record with same row hash, then it increments the uniqueness ID which is a 32 bit number. For new row hash, uniqueness ID is assigned as 1 and incremented whenever a record with same row hash is inserted.
-8. The combination of Row hash and Uniqueness ID is called as Row ID.
+8. The **combination of Row hash and Uniqueness ID is called as Row ID**.
 9. Row ID prefixes each record in the disk.
-10. Each table row in the AMP is logically sorted by their Row IDs.
+10. Each table row in the AMP is logically **sorted by their Row IDs**.
 
 **Single Table Join Index** : Single Table Join index allows to partition a large table based on the different primary index columns than the one from the base table.
 
@@ -153,7 +155,7 @@ Advantages
 4. Drop the old data quickly and add new data.
 
 OLAP (**Online Analytical Processing**)functions are similar to aggregate functions except that the aggregate functions will 
-return only one value whereas the OLAP function will provide the individual rows in addition to the aggregates.
+return **only one value** whereas the OLAP function will provide the individual rows in addition to the aggregates.
 
 Following is an example to find the cumulative sum or running total of NetPay on Salary table. Records are sorted by EmployeeNo and 
 **cumulative sum** is calculated on NetPay column.
@@ -200,6 +202,6 @@ The target table is not required for MultiLoad.
 Data can be extracted from one or more tables using Join. Since FastExport exports the data in **64K blocks**, it is useful for 
 extracting large volume of data.
 
-**BTEQ utility** is a powerful utility in Teradata that can be used in both batch and interactive mode. It can be used to run any
+**BTEQ utility** is a powerful utility in Teradata that can be used in both **batch and interactive** mode. It can be used to run any
 DDL statement, DML statement, create Macros and stored procedures. BTEQ can be used to import data into Teradata tables from flat
 file and it can also be used to extract data from tables into files or reports.

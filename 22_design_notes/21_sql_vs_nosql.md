@@ -1,5 +1,8 @@
 # SQL vs NoSQL
 
+A **database** is an organized collection of data (also known as a data store) stored and accessed electronically 
+through the use of a **database management system**.
+
 **REASONS TO USE A SQL DATABASE**
 a. You need to ensure ACID compliancy (Atomicity, Consistency, Isolation, Durability).
 b. Your data is structured and unchanging.
@@ -81,7 +84,7 @@ Basically, there are four types of NoSQL databases.
 3. **Costly** to scale.	
    **Cheaper to scale** when compared to relational databases.
 
-4. SQL databases are **vertically scalable**. They can be scaled by increasing the hardware capacity (CPU, RAM, SSD, etc.) on a 
+4. SQL databases are **vertically scalable**. They can be scaled by increasing the **hardware capacity** (CPU, RAM, SSD, etc.) on a 
    single   server.	
    NoSQL databases are **horizontally scalable**. They can be scaled by adding more servers to the infrastructure to manage large load 
    and lessen the heap.

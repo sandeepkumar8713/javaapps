@@ -171,3 +171,5 @@ DENSE_RANK: a list of results could use the DENSE_RANK function and show values 
 ROW_NUMBER: a list of results could use the ROW_NUMBER function and show values of 1, 2, 3, 4, and 5. All of the numbers are unique.
 
 Link : https://www.dsfaisal.com/articles/sql/leetcode-sql-problem-solving#175-combine-two-tables--easy--leetcode
+
+clustered vs non-clustered index

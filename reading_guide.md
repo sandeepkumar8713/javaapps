@@ -2,12 +2,13 @@
 
 1. All the Object Oriented **design patterns**
    **OOPS**
+   **Java class definitions** with enum, interface, inheritance and driver method
 
 2. 8 LLD designs (Bookmyshow, Uber, Flipkart, Parking Lot, Chess, Imdb, Netflix, Notification)
    9 HLD designs **read** (Bookmyshow, Uber, Whatsapp, Twitter, Tiny url, DoorDash, Cricbuzz, Quora)
 
 3. 5 API Designs (Search Service, File Service, Pub Sub Service, Twitter, Uber)
-   3 Class Diagrams (Elevator, Car Rental, Cricinfo)
+   3 Class Diagrams (Elevator, Meeting Scheduler, Car Rental, FB, Cricinfo)
    [SQL Query](23_sql/00_summary_queries.md)
 
 4. [HLD Gloden rules](22_design_notes/03_hld_golden_rules.md)
@@ -20,10 +21,12 @@
    HLD details : Redis, Load Balancer, CI/CD steps, Consistent hashing
 
 6. [Kafka             ](26_kafka/04_short_points.md)
-   [Distributed Cache ](../systemdesign/03_High_level_design/19_distrubuted_cache/01_intro.md)
-   [Distributed Queue ](../systemdesign/03_High_level_design/20_distributed_queue/01_intro.md)
-   [Pub sub           ](../systemdesign/03_High_level_design/21_pub_sub/01_intro.md)
-   [Database Sharding ](../systemdesign/03_High_level_design/30_databases/01_intro.md)
+   [Distributed Cache ](../systemdesign/03_high_level_design/19_distrubuted_cache/01_intro.md)
+   [Distributed Queue ](../systemdesign/03_high_level_design/20_distributed_queue/01_intro.md)
+   [Pub sub           ](../systemdesign/03_high_level_design/21_pub_sub/01_intro.md)
+   [Distributed Search](../systemdesign/03_high_level_design/24_distributed_search/01_intro.md)
+   [Load Balancing    ](../systemdesign/03_high_level_design/29_load_balancer/01_intro.md)
+   [Database          ](../systemdesign/03_high_level_design/30_databases/01_intro.md)
    **Redis**
 
 7. **Read** High level questions from System design
@@ -31,7 +34,7 @@
    [Summary_2](27_summary/02_summary_of_components.md) (5 points)
 
 8. [Data Pipeline](28_data_pipeline/01_intro.md)
-      (Big query, DBT, SQL, Spark, ETL, Teradata)
+      (Big query, DBT, SQL, Spark, **ETL**, Teradata)
    [Spark Tutorial](../pythonapps/spark_tutorial/01_file.py)
 
 9. [Java Theory](20_java_theory/01_intro.md)

@@ -1,6 +1,6 @@
 ## 1. Distributed Cache
 
-[Link](../../systemdesign/03_High_level_design/19_distrubuted_cache/01_intro.md)
+[Link](../../systemdesign/03_high_level_design/19_distrubuted_cache/01_intro.md)
 
 caching system where multiple cache servers coordinate.
 **precalculating results, expensive queries, session data, reduce network costs**
@@ -42,8 +42,9 @@ insert(key, value), retrieve(key), delete(key)
 Storage hardware, Data structures, Cache client, Writing policy, Eviction policy
 
 **Replica of shards**
-We can start by adding one primary and two backup nodes in a cache shard. With replicas, there’s always a possibility of **inconsistency**. If our replicas are in close proximity, writing over replicas is performed 
-**synchronously to avoid inconsistencies** between shard replicas.
+We can start by adding **one primary and two backup** nodes in a cache shard. With replicas, there’s always a possibility of 
+**inconsistency**. If our replicas are in close proximity, writing over replicas is performed **synchronously to avoid inconsistencies** 
+between shard replicas.
 
 ![](images2/01_cache_detailed_hld.png)
 
@@ -57,7 +58,7 @@ monitoring will be required in case of failures or the addition of new nodes. Fi
 cache servers from the configuration service.
 
 **Distinctive Points**
-hotkey problem(replicas), Storage hardware(specialized or commodity hardware, secondary storage)
+**hotkey problem**(replicas), Storage hardware(specialized or commodity hardware, secondary storage)
 
 **strong consistency comes from synchronous writing**
 
@@ -86,8 +87,8 @@ hotkey problem(replicas), Storage hardware(specialized or commodity hardware, se
 Queue creation, Send message, Delete message, Queue deletion
 
 **Message Ordering**
-Best-effort ordering : messages will be put in the queue in the same order they were **received**
-Strict ordering : messages are placed in a queue in the order that they’re **produced**.
+**Best-effort ordering** : messages will be put in the queue in the same order they were **received**
+**Strict ordering** : messages are placed in a queue in the order that they’re **produced**.
 Monotonically increasing numbers, Causality-based sorting at the server side, Using time stamps based on synchronized clocks
 
 **Effect on performance**
@@ -102,11 +103,14 @@ Solution : **locking mechanism**, **system’s buffer(OS handles it with a singl
 
 ![](images2/02_queue_hld.png)
 
-**Front-end service**
+**Front-end service** (6)
 Request validation, Authentication and authorization, Caching, Request dispatching, Request deduplication, Usage data collection
 
 **Metadata service**
-This component is responsible for **storing, retrieving, and updating the metadata** of queues in the metadata store and cache. 
+This component is responsible for **storing, retrieving, and updating the metadata of queues** in the metadata store and cache. 
+
+If the metadata that needs to be stored is **small** and can reside on a single machine, then it’s **replicated** on each cluster server. 
+If the metadata that needs to be stored is too large, then one of the following modes can be followed:
 
 The **first strategy** is to use the **sharding approach** to divide data into different shards. Sharding can be performed based
 on some **partition key or hashing** techniques, as was discussed in the lesson on database partitioning. Each **shard** is stored
@@ -118,6 +122,8 @@ The **second approach** is similar to the first one. However, the mapping table 
 of just on the front-end servers. Because of this, **any random host** can receive a request and **forward** it to the host where the 
 data resides. This technique is suitable for **read-intensive** applications.
 
+**Back-end service**
+
 In the primary-secondary model, each node is considered a **primary host** for a collection of queues. The responsibility of a
 primary host is to **receive requests** for a particular queue and be **fully responsible for data replication**. 
 
@@ -126,8 +132,8 @@ replication easier. When a random host receives a message, say host C, for a que
 the other hosts where the queue **103 is stored, i.e., Node A and Node B.**
 
 There are two ways to replicate messages in a queue residing on multiple hosts.
-1. Synchrounous replication
-2. Asynchrounous replication
+1. **Synchrounous replication**
+2. **Asynchrounous replication**
 
 1. A job can then **delete the message when the expiration conditions are met**.
 2. However, it’s made **invisible** for some time via an attribute—for example, attribute—for example, visibility_timeout. This way, the 
@@ -147,7 +153,7 @@ create, write, read, subscribe, unsubscribe, delete_topic
 
 **Components**
 Brokers : handle write and read requests, multiple partitions, specific offset address
-To maintian strict order of messages : The user can provide the partition_ID while writing into the system.
+To maintian strict order of messages : The user can provide the **partition_ID** while writing into the system.
 
 We’ll allocate the **partitions to various brokers** in the system. We’ll follow strict ordering in partitions by adding newer content at
 the **end of existing messages**.
@@ -164,7 +170,7 @@ Verify the consumer, Retention time management, Message receiving options manage
 Search: Users should get relevant content based on their search queries.
 
 **Inverted index**
-For each term, the index computes : list of documents, frequency, position
+For each term, the index computes : **list of documents, frequency, position**
 Pros : full-text searches, reduces the time of counting the occurrence
 Cons : storage overhead, Maintenance costs
 
@@ -243,7 +249,7 @@ so that the client can fetch whatever is appropriate as per prevailing network a
 This set of servers receives data from the parent nodes in the tree, which eventually receive data from the origin servers.
 **The data is copied from the origin server to the proxy servers** by following different **paths in the tree**.
 
-The **tree structure** for data distribution allows us to scale our system for increasing users by adding more server nodes to 
+The **tree structure** for data distribution allows us to **scale** our system for increasing users by adding more server nodes to 
 the tree. It also reduces the **burden** on the origin server for data distribution. A CDN typically has one or two **tiers** of 
 proxy servers (caches).
 
@@ -256,20 +262,20 @@ There are two important factors that are relevant to finding the nearest proxy s
 1. **Network distance** 
 2. **Requests load** 
 
-There are two steps in the DNS redirection approach:
+There are two steps in the **DNS redirection approach**:
 1. In the first step, it maps the clients to the appropriate **network location**.
 2. In the second step, it **distributes the load over** the proxy servers in that location to balance the load among
    the proxy servers.
 
 **Request redirection**
-Anycast(same IP), Client multiplexing, HTTP redirection
+Anycast(same IP), Client multiplexing(list of candidate servers), HTTP redirection
 
 **Consistency**
 Periodic polling, Time-to-live, Leases(origin infroms after sometime)
 
 **Deployment**
 1. What are the best **locations** to install proxy servers to maximally utilize CDN technology?
-2. How many **CDN proxy** servers should we install?
+2. How **many CDN proxy** servers should we install?
 
 **Placement of CDN proxy servers**
 The CDN proxy servers must be placed at network locations with good connectivity. See the options below:
@@ -319,7 +325,8 @@ Lack of standardization, Consistency
       2. uneven distribution
    2. Hash based sharding
       1. uniformly distributed
-      2. can’t perform range queries
+
+      1. can’t perform range queries
 
 3. **Consistent hashing**
    1. easy to scale

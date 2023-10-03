@@ -1,7 +1,9 @@
 ## NFRs
 Scalability, Security, Consistency, Availability, Performance
 
-## 1. Quora
+## 1. Youtube 
+
+## 2. Quora
 
 **FRs**
 Questions and answers, Upvote/downvote and comment, Search, Recommendation system, Ranking answers
@@ -14,7 +16,7 @@ postQuestion, postAnswer, upvote, comment, search
 **Distinctive points**
 Vertical Sharding, Disaster recovery
 
-## 2. Google Maps
+## 3. Google Maps
 
 **FRs**
 Current Location, Recommend the fastest route, Give directions
@@ -30,7 +32,7 @@ currLocation, findRoute, directions
 **Distinctive points**
 Segments(Storage schema of each segement), Graph DB, Websocket, pubsub, Cache, analytics, livelocation
 
-## 3. Yelp
+## 4. Yelp
 
 **FRs**
 User account, search, Feedback
@@ -47,7 +49,7 @@ SQL : Place, Photo, Reviews, Users
 Searching(introduce segements), Cache(for faster fetch), Data partition based on Region or place_id, Ensure Availability by replicating 
 quad server.
 
-## 4. Instagram
+## 5. Instagram
 
 **FRs**
 Post photos and videos, Follow and unfollow users, Like or dislike posts, Search photos and videos, Generate news feed
@@ -63,7 +65,7 @@ SQL : Users, Followers, Photos, Videos
 **Distinctive points**
 Timeline Generation(Pull, push, Hybrid approach)
 
-## 5. Type Ahead
+## 6. Type Ahead
 
 **FRs**
 Top n frequent and relevent words
@@ -77,7 +79,7 @@ getSuggestions, addToDatabase
 Collection,Aggregator, Trie builder, WebSocket, localcopy in browser, MapReduce, normalize frequency
 AJAX, Trie partitioning, Track the top searches
 
-## 6. Google Docs
+## 7. Google Docs
 
 **FRs**
 Document collaboration, Conflict resolution, Suggestions, View count, History

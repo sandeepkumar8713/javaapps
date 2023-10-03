@@ -5,18 +5,66 @@ Scalability, Security, Consistency, Availability, Performance
 
 ## 2. Quora
 
+[Link](../../systemdesign/03_high_level_design/02_quora/01_intro.md)
+
 **FRs**
 Questions and answers, Upvote/downvote and comment, Search, Recommendation system, Ranking answers
 
 **API**
 postQuestion, postAnswer, upvote, comment, search
 
+We can use critical data like questions, answers, comments, and upvotes/downvotes in a relational database like **MySQL** because it offers 
+a higher degree of consistency. NoSQL databases like **HBase** can be used to store the number of **views of a page**, scores used to rank 
+answers, and the **extracted features** from data to be used for recommendations later on.
+
+For performance improvement, two distributed cache systems are used: **Memcached and Redis**. Memcached is primarily used to store 
+frequently accessed critical data that is otherwise stored in **MySQL**. On the other hand, **Redis** is mainly used to store an online 
+view counter of answers because it allows.
+
+Memcached implements a **multi-threaded architecture** by utilizing multiple cores. Therefore, for storing **larger datasets**, Memcached can perform better than Redis.
+
+Redis uses a **single core** and shows better performance than Memcached in storing **small datasets** when measured in terms of cores.
+
+A set of **compute servers** are required to facilitate features like **recommendations and ranking** based on a set of attributes.
+
+**Search feature**: Over time, as questions and answers are fed to the Quora system, it is possible to **build an index** in the 
+**HBase**.
+
+Quora will need a **notification service** in the following scenarios.
+
+To achieve that, we do **vertical sharding** in two ways:
+1. We split tables of a single database into multiple partitions. The concept is depicted in Partitions 2 and 3, 
+   which embed Tables 4 and 3, respectively.
+2. We combine multiple tables into a single partition, where join operations are anticipated. The concept is depicted in    
+   Partition 1, which embeds Tables 1 and 2.
+
+After we complete the partitioning, we require two types of mappings or metadata to complete our scaling process:
+1. Which partitions contain which tables and columns?
+2. Which hosts are primary and replicas of a particular partition?
+
+Both of these mappings are maintained by a service like **ZooKeeper**.
+The sharded design above ensures **scalability** because we are able to locate related data in a single partition, and 
+therefore it eliminates the need for querying data from multiple shards.
+
+**Note**: Quora serves the **ML compute engine** by extracting features from questions and answers stored in MySQL. In this 
+case, the operational tools come in handy to **transfer data between MyRocks and MySQL**.
+
 ![](images/01_quora_hld_detail.png)
 
 **Distinctive points**
-Vertical Sharding, Disaster recovery
+Kafka, ML, 
+Vertical Sharding, (Therefore, we are able to **co-locate related data** and **reduce traffic** on hot data.)
+Disaster recovery
+
+The following are important questions for designing a disaster recovery plan:
+1. What data and systems are considered **critical** to recover from disasters?
+2. How **fast** is the restoration from the backup facility?
+3. Can **all** systems be recovered through backups?
+4. How can we deal with potential **loss of data** that we couldn’t replicate before the disaster hit?
 
 ## 3. Google Maps
+
+[Link](../../systemdesign/03_high_level_design/03_google_maps/01_intro.md)
 
 **FRs**
 Current Location, Recommend the fastest route, Give directions
@@ -31,6 +79,55 @@ currLocation, findRoute, directions
 
 **Distinctive points**
 Segments(Storage schema of each segement), Graph DB, Websocket, pubsub, Cache, analytics, livelocation
+
+**Inside Segment**
+Let’s talk about finding paths between two locations within a **segment**. We have a graph representing the road network in that 
+segment. Each intersection/junction acts as a **vertex and each road acts as an edge**. The graph is weighted, and 
+there could be multiple weights on each edge—such as distance, time, and traffic—to find the optimal path. For a given source and 
+destination, there can be multiple paths. We can use any of the graph algorithms on that segment’s graph to find the shortest paths. The 
+most common shortest path algorithm is the **Dijkstra’s algorithm**.
+All of the above processing (running the shortest path algorithm on the segment graph) is done **offline** (not on a user’s critical path).
+
+**Between Segement**
+Since we can’t run the shortest path algorithm for all the segments throughout the globe, it’s critical to figure out how 
+many segments we need to consider for our algorithm while traveling inter-segment. The **aerial distance** between the two 
+places is used to limit the number of segments. With the source and destination points, we can find the aerial distance 
+between them using the **haversine formula**.
+
+Suppose the aerial distance between the source and the destination is 10 kilometers. In that case, we can include segments 
+that are at a **distance of 10 kilometers from the source and destination** in each direction. This is a significant 
+improvement over the large graph.
+
+Once the number of segments is limited, we can constrain our graph so that the vertices of the graph are the **exit points** of 
+each segment, and the calculated paths between the exit points are the graph’s edges. All we have to do now is run the 
+**shortest path algorithm** on this graph to find the route.
+
+**ETA computation**
+For computing the ETA with reasonable accuracy, we collect the **live location** data ((userID, timestamp,(latitude, 
+longitude))) from the navigation service through a **pub-sub system**. With location data streams, we can calculate and 
+**predict traffic patterns** on different roads. Some of the things that we can calculate are:
+
+1. Traffic (high/medium/low) on different routes or roads.
+2. The average speed of a vehicle on different roads.
+3. The time intervals during which a similar traffic pattern repeats itself on a route or road. For example, 
+   highway X will have high traffic between 8 to 10 AM.
+
+**Key-value store**:
+1. The segment’s ID.
+2. The serverID on which the segment is hosted.
+3. In reality, each segment is a polygon, so we store **boundary coordinates** (latitude/longitude), possibly as a list.
+4. A list of segment IDs of the neighbors segments.
+
+**Graph database**
+1. The road network inside the segment in the form of a graph.
+
+**Relational DB**
+
+We store the information to determine whether, at a particular hour of the day, the roads are congested. This later 
+helps us decide whether or not to update the graph (weights) based on the live data.
+1. **edgeID** identifies the edge.
+2. **hourRange** tells us which hour of the day it is when there are typical road conditions (non-rush hour) on the road.
+3. **rush** is a Boolean value that depicts whether there is congestion or not on a specific road at a specific time.
 
 ## 4. Yelp
 

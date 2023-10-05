@@ -35,6 +35,8 @@ Medium : https://medium.com/double-pointer/system-design-interview-a-two-player-
 9. We can have schedular running every 2-3 times in a sec to fetch the latest move from the Redis and send to user via 
    active **web socket** connection.
 
+In Ludo, the pieces are called **token**.
+
 ## DB Design
 
       Game : game_id, player_id_1, player_id_2, player_1_color, player_2_color, game_status, current_player_id, game_winner_player_id

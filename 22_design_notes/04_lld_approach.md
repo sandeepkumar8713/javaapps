@@ -53,3 +53,22 @@ Rooms don't exist separate to a House.
 ## Uncle bob clean architecture
 
 Link : https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+
+## OOPS concept
+
+**Abstraction**
+```python
+from abc import ABC
+class ClassName(ABC):
+```
+
+**Encapsulation in OOPS** : (access modifiers, information hiding)
+public, protected (single _ variable name start), private(__ double underscore), 
+
+By definition, encapsulation describes bundling **data and methods** that work on that data within one unit, like a class in Java. 
+We often often use this concept to hide an object’s internal representation or state from the outside. This is called information hiding.
+
+**Inheritance**
+
+**Polymorphism** (having many forms)
+same function in base and child class

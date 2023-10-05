@@ -26,19 +26,19 @@
    [Pub sub           ](../systemdesign/03_high_level_design/21_pub_sub/01_intro.md)
    [Distributed Search](../systemdesign/03_high_level_design/24_distributed_search/01_intro.md)
    [Load Balancing    ](../systemdesign/03_high_level_design/29_load_balancer/01_intro.md)
-   [Database          ](../systemdesign/03_high_level_design/30_databases/01_intro.md)
+   [Database          ](../systemdesign/03_high_level_design/30_databases/01_intro.md) (**Sharding**)
    **Redis**
 
 7. **Read** High level questions from System design
    [Summary_1](27_summary/01_summary_of_HLD.md) (6 points)
    [Summary_2](27_summary/02_summary_of_components.md) (5 points)
 
-8. [Data Pipeline](28_data_pipeline/01_intro.md)
+8. [Data Pipeline](28_data_pipeline/01_inztro.md)
       (Big query, DBT, SQL, Spark, **ETL**, Teradata)
    [Spark Tutorial](../pythonapps/spark_tutorial/01_file.py)
 
 9. [Java Theory](20_java_theory/01_intro.md)
-   (Intro: SpringBoot Annotation, Hash Set, Java Bean, Serilization, 
+   (Intro: SpringBoot Annotation, **Hash Set**, Java Bean, Serilization, 
            Singleton cloning, foreach, JPA, immuatable class)
    (Streams, lambda, optional class, New date API)
    **Docker** (22_design_notes/23_docker.md)

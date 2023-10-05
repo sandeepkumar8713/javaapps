@@ -89,7 +89,7 @@ Java 17 (14 Sep, 2021)
 **hashCode() method**: hashCode() method is used to get the hash code of an object. hashCode() method of the object class 
 **returns the memory reference of an object in integer form**. Definition of hashCode() method is public native hashCode(). It 
 indicates the implementation of hashCode() is native because there is **not any direct method in java to fetch the reference** of the 
-object. It is possible to **provide your implementation of hashCode()**. In HashMap, hashCode() is used to calculate the bucket and 
+object. It is possible to **provide your implementation of hashCode()**. In HashMap, hashCode() is used to calculate the **bucket** and 
 therefore calculate the index. 
 
 **equals() method**: This method is used to check whether 2 objects are equal or not. This method is provided by the Object class. 
@@ -100,6 +100,9 @@ otherwise not equal. It **compares the object references** or the memory locatio
 In hashing there is a hash function that maps keys to some values. But these hashing function may lead to **collision** that is 
 two or more keys are mapped to same value. **Chain hashing** avoids collision. The idea is to make each cell of hash table
 point to a **linked list** of records that have **same hash function value**.
+
+**How to handle bucket collision?**
+**hashCode() is used to compute the bucket number and equals() is used to find the Entry with the same key.**
 
 Let’s create a hash function, such that our hash table has ‘N’ number of buckets. To insert a node into the hash table, we need 
 to find the hash index for the given key. And it could be calculated using the hash function. 
@@ -126,6 +129,16 @@ Properties of Hashing:
 2. Two objects which are not equal **may or may not have same hash values**. Thus, different objects need not have different hash 
    values. 
 3. The hash values of objects must remain **consistent** when computed multiple times in the same execution cycle.
+
+In java equals() method is used to compare equality of two Objects. The equality can be compared in two ways:
+
+**Shallow comparison** : The default implementation of equals method is defined in Java.lang.Object class which simply checks if two Object 
+references (say x and y) refer to the same Object. i.e. It checks if x == y. Since Object class has no data members that define its state, 
+it is also known as shallow comparison.
+
+**Deep Comparison**: Suppose a class provides its own implementation of equals() method in order to compare the Objects of that class w.r.t 
+state of the Objects. That means data members (i.e. fields) of Objects are to be compared with one another. Such Comparison based on data 
+members is known as deep comparison.
 
 **Example**
 

@@ -3,6 +3,10 @@ Scalability, Security, Consistency, Availability, Performance
 
 ## 1. Youtube 
 
+![](images/01_youtube_hld.png)
+
+Bigtable is for thumbnail
+
 ## 2. Quora
 
 [Link](../../systemdesign/03_high_level_design/02_quora/01_intro.md)
@@ -42,7 +46,7 @@ After we complete the partitioning, we require two types of mappings or metadata
 1. Which partitions contain which tables and columns?
 2. Which hosts are primary and replicas of a particular partition?
 
-Both of these mappings are maintained by a service like **ZooKeeper**.
+Both of these **mappings are maintained by a service like ZooKeeper**.
 The sharded design above ensures **scalability** because we are able to locate related data in a single partition, and 
 therefore it eliminates the need for querying data from multiple shards.
 
@@ -122,7 +126,6 @@ longitude))) from the navigation service through a **pub-sub system**. With loca
 1. The road network inside the segment in the form of a graph.
 
 **Relational DB**
-
 We store the information to determine whether, at a particular hour of the day, the roads are congested. This later 
 helps us decide whether or not to update the graph (weights) based on the live data.
 1. **edgeID** identifies the edge.
@@ -131,11 +134,22 @@ helps us decide whether or not to update the graph (weights) based on the live d
 
 ## 4. Yelp
 
+[Link](../../systemdesign/03_high_level_design/04_yelp/01_intro.md)
+
 **FRs**
 User account, search, Feedback
 
 **API**
-addPlace, addReview
+search, addPlace, addReview
+
+**Storage schema**
+Place, Photos, Reviews, Users
+
+**QuadTree servers**: These are a set of servers that have trees that contain the places in the segments. A QuadTree server finds a 
+**list of places based on the given radius and the user’s provided location** and returns that list to the user. This component mainly 
+aids the search functionality.
+**Aggregators**: The QuadTrees **accumulate all the places and send them to the aggregators**. Then, the aggregators aggregate the results 
+and return the search result to the user.
 
 ![](images/03_yelp_design.png)
 
@@ -145,6 +159,31 @@ SQL : Place, Photo, Reviews, Users
 **Distinctive points**
 Searching(introduce segements), Cache(for faster fetch), Data partition based on Region or place_id, Ensure Availability by replicating 
 quad server.
+
+We use a **key-value store** for quick access to places in the segments. The key is the **segment_ID**, while the value contains the list 
+of places in that segment.
+
+## Data partitioning
+Keeping 20% growth per year in mind, the number of places will increase. We can partition data on the following basis:
+1. **Regions**: We can split our places into regions on the basis of zip codes. This way, all the places that belong to a specific 
+   region are stored on a single node. We store information on the region along with the place, so that we can query on the basis of regions too. We can use the user’s region to find the places in that specific region. This data partitioning comes with a few challenges.
+2. **PlaceID**: We can partition data on the basis of PlaceID instead of the region to avoid the query overload in popular seasons or 
+   rush hours. We can use a key-value store to store the places. In this case, the key is the **PlaceID** and the value contains the
+   **server** in which that place is stored. This will make the process of fetching places more efficient.
+
+So, we’ll opt for partitioning on the basis of places. Moreover, we’ll also use **caches for popular places**. The cache will have information about that particular place.
+
+**Insert a new place**
+
+We insert a new place into the database as well as in our **QuadTree**. We find the segment of the new place if the QuadTree is 
+distributed on different servers, and then we add it to that segment. We **split the segment if required and update the QuadTree** 
+accordingly.
+
+**Rank popular places**
+
+We need a service, a rating calculator, which calculates the overall rating of a service. We can store the **rating of a place** in the 
+database and also in the QuadTree, along with the ID, latitude, and longitude of the place. The QuadTree returns the **top 50 or 100**
+popular places within the given radius. The **aggregator service determines the actual top places** and returns them to the user.
 
 ## 5. Instagram
 

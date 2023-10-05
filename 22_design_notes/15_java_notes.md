@@ -64,6 +64,18 @@ interface ComputerAbstractFactory {
     public Computer createComputer();
 
 }
+
+abstract class HouseTemplate {
+    public abstract void buildWalls();
+	public abstract void buildPillars();
+}
+
+class WoodenHouse extends HouseTemplate {
+	@Override
+	public void buildPillars() {
+		System.out.println("Building Pillars with Wood coating");
+	}
+}
 ```
 
 --------------------------------------------

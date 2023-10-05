@@ -40,6 +40,9 @@
 16. **UDP vs TCP**, n/w layers
 17. Explain how to achievce perfomance in HLD
 18. plagiarized how to detect in text.
+19. use interface, not so tightly coupled, where we need to pass it as a parameter. (payment type)
+    Completly different entity have to do similar stuff.
+20. Python vs Java
 
 ## Language Specific
 1. Add a good **spring** and **spring boot** rest example with **DB, S3 and external api call**.

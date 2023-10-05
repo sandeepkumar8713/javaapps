@@ -149,3 +149,35 @@
 38. SELECT EmployeeNo, NetPay, 
     SUM(Netpay) OVER(ORDER BY EmployeeNo ROWS UNBOUNDED PRECEDING) as TotalSalary 
     FROM Salary;                                        // **Cummulative Sum**
+
+37. SELECT 	
+        city,
+        year,
+        population_needing_house - LAG(population_needing_house)
+        OVER (PARTITION BY city ORDER BY year ) AS difference_previous_year
+    FROM housing 
+    ORDER BY city, year                               //  **difference between the number of people needing a house** 
+                                                      //  **between this year and the previous year.**
+
+38. https://learnsql.com/blog/sql-window-functions-cheat-sheet/
+
+    Ranking Functions
+        row_number()
+        rank()
+        dense_rank()
+    Distribution Functions
+        percent_rank()
+        cume_dist()
+    Analytic Functions
+        lead()
+        lag()
+        ntile()
+        first_value()
+        last_value()
+        nth_value()
+    Aggregate Functions
+        avg()
+        count()
+        max()
+        min()
+        sum()

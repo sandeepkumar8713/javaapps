@@ -43,6 +43,8 @@
 19. use interface, not so tightly coupled, where we need to pass it as a parameter. (payment type)
     Completly different entity have to do similar stuff.
 20. Python vs Java
+21. Coffee, tea, random, wrong label, start with machine which is labeled r.
+22. How to solve idmpotency (sent notification but failed to send ack, how will you stop next similar notification)
 
 ## Language Specific
 1. Add a good **spring** and **spring boot** rest example with **DB, S3 and external api call**.

@@ -430,6 +430,10 @@ lastElement = iterator.next() }
 
     leftMin[i] = Math.min(leftMin[i-1], arr[i]);
 
+    // Getting the list view of Array
+    String a[] = new String[] { "A", "B", "C", "D" };
+    List<String> list = Arrays.asList(a);
+
 ---------------------------------------------
 **Sample**
 
